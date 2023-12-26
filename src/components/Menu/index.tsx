@@ -1,3 +1,4 @@
+"use client"
 import { useState } from "react"
 import { Search as SearchIcon } from "@styled-icons/material-outlined"
 import { ShoppingCart as ShoppingCartIcon } from "@styled-icons/material-outlined"
