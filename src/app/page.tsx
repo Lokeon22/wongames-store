@@ -1,42 +1,25 @@
-import { Container } from "../components/Container"
-import Menu from "../components/Menu"
-import Footer from "../components/Footer"
-import Heading from "../components/Heading"
+import bannersMock from "../components/BannerSlider/mock"
+import gamesMock from "../components/GameCardSlider/mock"
+import highlightMock from "../components/Highlight/mock"
+
+import { Home as HomeContent } from "../templates/Home"
+
+async function getMocksData() {
+  return {
+    banners: bannersMock,
+    newGames: gamesMock,
+    mostPopularHighlight: highlightMock,
+    mostPopularGames: gamesMock,
+    upcommingGames: gamesMock,
+    upcommingHighlight: highlightMock,
+    upcommingMoreGames: gamesMock,
+    freeGamesHighlight: highlightMock,
+    freeGames: gamesMock
+  }
+}
 
 export default async function Home() {
-  return (
-    <section>
-      <Container>
-        <Menu />
-      </Container>
+  const data = await getMocksData()
 
-      <Container>
-        <Heading lineLeft lineColor="secondary" color="black">
-          News
-        </Heading>
-      </Container>
-
-      <Container>
-        <Heading lineLeft lineColor="secondary">
-          Most popular
-        </Heading>
-      </Container>
-
-      <Container>
-        <Heading lineLeft lineColor="secondary">
-          Upcoming
-        </Heading>
-      </Container>
-
-      <Container>
-        <Heading lineLeft lineColor="secondary">
-          Free Games
-        </Heading>
-      </Container>
-
-      <Container>
-        <Footer />
-      </Container>
-    </section>
-  )
+  return <HomeContent {...data} />
 }
