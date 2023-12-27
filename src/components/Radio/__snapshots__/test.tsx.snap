@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Radio /> should render with black label 1`] = `
+.c0 {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.c1 {
+  width: 1.9rem;
+  height: 1.9rem;
+  border-radius: 1.5rem;
+  border: 0.2rem solid #F231A5;
+  appearance: none;
+  position: relative;
+  outline: none;
+}
+
+.c1:focus {
+  box-shadow: 0 0 0.5rem #F231A5;
+}
+
+.c1:checked {
+  background-color: transparent;
+}
+
+.c1:checked::before {
+  content: "";
+  position: absolute;
+  top: 0.3rem;
+  left: 0.3rem;
+  width: 0.9rem;
+  height: 0.9rem;
+  background-color: #F231A5;
+  border-radius: 50%;
+}
+
+.c2 {
+  color: #030517;
+  line-height: 1;
+}
+
+<main
+  class="c0"
+>
+  <input
+    class="c1"
+    id="radio"
+    type="radio"
+  />
+  <label
+    class="c2"
+    for="radio"
+    labelcolors="black"
+  >
+    radio
+  </label>
+</main>
+`;
