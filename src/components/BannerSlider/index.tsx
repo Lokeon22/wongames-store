@@ -1,4 +1,3 @@
-"use client"
 import Banner, { BannerProps } from "../Banner"
 import Slider, { SliderSettings } from "../Slider"
 import * as S from "./styles"

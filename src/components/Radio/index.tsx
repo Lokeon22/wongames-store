@@ -1,4 +1,3 @@
-"use client"
 import React, { InputHTMLAttributes } from "react"
 import * as S from "./styles"
 

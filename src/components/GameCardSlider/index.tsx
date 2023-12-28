@@ -1,4 +1,3 @@
-"use client"
 import { ArrowBackIos as ArrowLeft } from "@styled-icons/material-outlined"
 import { ArrowForwardIos as ArrowRight } from "@styled-icons/material-outlined"
 import * as S from "./styles"

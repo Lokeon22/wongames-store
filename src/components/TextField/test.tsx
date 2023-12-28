@@ -1,5 +1,6 @@
 import { screen, waitFor } from "@testing-library/react"
 import { renderWithTheme } from "../../utils/tests/helpers"
+import { Email } from "@styled-icons/material-outlined"
 
 import TextField from "."
 import userEvent from "@testing-library/user-event"
@@ -72,5 +73,50 @@ describe("<TextField />", () => {
     await waitFor(() => {
       expect(onChange).toHaveBeenCalledTimes(text.length)
     })
+  })
+
+  it("should render with icon", () => {
+    renderWithTheme(<TextField icon={<Email data-testid="icon" />} />)
+
+    expect(screen.getByTestId(/icon/i)).toBeInTheDocument()
+  })
+
+  it("should render on the right size", () => {
+    renderWithTheme(
+      <TextField iconPosition="right" icon={<Email data-testid="icon" />} />
+    )
+
+    expect(screen.getByTestId(/icon/i)).toHaveStyle({ right: "-0.6rem" })
+  })
+
+  it("should render on the left size by default", () => {
+    renderWithTheme(<TextField icon={<Email data-testid="icon" />} />)
+
+    expect(screen.getByTestId(/icon/i)).toHaveStyle({ right: "0.6rem" })
+  })
+
+  it("should render the disabled input", () => {
+    renderWithTheme(<TextField disabled label="hello" />)
+
+    expect(screen.getByRole("textbox")).toBeDisabled()
+  })
+
+  it("should return error on input", () => {
+    const { container } = renderWithTheme(
+      <TextField
+        icon={<Email data-test="icon" />}
+        error="error"
+        label="email"
+        labelFor="email"
+        id="email"
+      />
+    )
+
+    expect(screen.getByText(/error/i)).toBeInTheDocument()
+    expect(screen.getByText(/error/i)).toHaveStyle({
+      color: "#FF6347"
+    })
+
+    expect(container.firstChild).toMatchSnapshot()
   })
 })
