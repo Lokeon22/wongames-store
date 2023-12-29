@@ -1,3 +1,4 @@
+"use client"
 import SlickSlider, { Settings } from "react-slick"
 import * as S from "./styles"
 

@@ -1,13 +1,16 @@
 import styled, { css } from "styled-components"
+import media from "styled-media-query"
 
 import * as LogoStyles from "../../components/Logo/styles"
 import * as HeadingStyles from "../../components/Heading/styles"
 
 export const Wrapper = styled.section`
-  width: 100%;
   height: 100vh;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+
+  ${media.greaterThan("medium")`
+    grid-template-columns: repeat(2, 1fr);
+  `}
 `
 
 export const BannerBlock = styled.div`
@@ -43,12 +46,9 @@ export const BannerBlock = styled.div`
 
     .content {
       margin: auto 0;
-
-      h2 {
-        font-size: 5.2rem;
-        line-height: 120%;
-      }
     }
+
+    ${media.lessThan("medium")`display: none`}
   `}
 `
 
@@ -57,7 +57,6 @@ export const Subtitle = styled.h3`
     color: ${theme.colors.white};
     font-size: ${theme.font.sizes.xxlarge};
     font-weight: ${theme.font.normal};
-    margin-top: ${theme.spacings.xxsmal};
 
     > strong {
       color: ${theme.colors.primary};
@@ -95,4 +94,8 @@ export const FormContainer = styled.div`
 
 export const FormWrapper = styled.div`
   width: 30rem;
+
+  ${media.greaterThan("medium")`
+    width: 36rem;
+  `}
 `

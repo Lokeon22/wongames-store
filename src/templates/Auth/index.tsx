@@ -13,10 +13,10 @@ export function Auth({ title, children }: AuthProps) {
   return (
     <S.Wrapper>
       <S.BannerBlock>
-        <Logo size="normal" />
+        <Logo id="banner" size="normal" />
 
         <div className="content">
-          <Heading size="medium">
+          <Heading size="huge">
             All your favorite games <br /> in one place
           </Heading>
           <S.Subtitle>
@@ -30,7 +30,7 @@ export function Auth({ title, children }: AuthProps) {
 
       <S.FormContainer>
         <S.FormWrapper>
-          <Logo size="large" color="black" />
+          <Logo id="form" size="large" color="black" />
           <Heading lineLeft lineColor="secondary" size="medium" color="black">
             {title}
           </Heading>

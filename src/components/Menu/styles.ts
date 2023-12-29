@@ -89,7 +89,7 @@ export const MenuFull = styled.nav<MenuProps>`
     flex-direction: column;
     justify-content: space-between;
     background: ${theme.colors.white};
-    position: absolute;
+    position: fixed;
     top: 0;
     bottom: 0;
     left: 0;
@@ -99,6 +99,7 @@ export const MenuFull = styled.nav<MenuProps>`
     opacity: ${isOpen ? 1 : 0};
     pointer-events: ${isOpen ? "all" : "none"};
     transition: opacity 0.3s ease-in-out;
+    z-index: ${theme.layers.alwaysOnTop};
 
     > svg {
       position: absolute;
@@ -146,12 +147,15 @@ export const RegisterBox = styled.div`
       margin: ${theme.spacings.xxsmal} 0;
       font-size: ${theme.font.sizes.xsmall};
     }
+
+    a {
+      text-decoration: none;
+    }
   `}
 `
 
-export const CreateAccount = styled.a`
+export const CreateAccount = styled.p`
   ${({ theme }) => css`
-    text-decoration: none;
     color: ${theme.colors.primary};
     font-size: ${theme.font.sizes.medium};
     border-bottom: 0.3rem solid ${theme.colors.primary};

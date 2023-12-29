@@ -1,5 +1,6 @@
 "use client"
 import { useState } from "react"
+import Link from "next/link"
 import { Search as SearchIcon } from "@styled-icons/material-outlined"
 import { ShoppingCart as ShoppingCartIcon } from "@styled-icons/material-outlined"
 import { Menu2 as MenuIcon } from "@styled-icons/remix-fill"
@@ -45,7 +46,9 @@ const Menu = ({ username }: MenuProps) => {
         </S.IconWrapper>
         {!username && (
           <MediaMatch greaterThan="medium">
-            <Button>Sign in</Button>
+            <Link href="/signin">
+              <Button>Sign in</Button>
+            </Link>
           </MediaMatch>
         )}
       </S.MenuGroup>
@@ -66,11 +69,15 @@ const Menu = ({ username }: MenuProps) => {
 
         {!username && (
           <S.RegisterBox>
-            <Button fullWidth size="large">
-              Log in now
-            </Button>
+            <Link style={{ width: "100%" }} href="/signin">
+              <Button fullWidth size="large">
+                Sign in
+              </Button>
+            </Link>
             <span>or</span>
-            <S.CreateAccount href="#">Sign up</S.CreateAccount>
+            <Link href="/signup">
+              <S.CreateAccount>Sign up</S.CreateAccount>
+            </Link>
           </S.RegisterBox>
         )}
       </S.MenuFull>
