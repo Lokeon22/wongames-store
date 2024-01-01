@@ -7,14 +7,8 @@ import { Home as HomeContent } from "../templates/Home"
 async function getMocksData() {
   return {
     banners: bannersMock,
-    newGames: gamesMock,
-    mostPopularHighlight: highlightMock,
-    mostPopularGames: gamesMock,
-    upcommingGames: gamesMock,
-    upcommingHighlight: highlightMock,
-    upcommingMoreGames: gamesMock,
-    freeGamesHighlight: highlightMock,
-    freeGames: gamesMock
+    gamecardsDT: gamesMock,
+    highlightsDT: highlightMock
   }
 }
 

@@ -62,26 +62,12 @@ export const NewsBg = styled(Section)`
   `}
 `
 
-export const MostPopularBg = styled(Section)`
-  ${({ theme }) => css`
-    > h2 {
-      margin-top: 9rem;
-      margin-bottom: ${theme.spacings.xsmall};
-    }
-  `}
-`
+export const MostPopularBg = styled(Section)``
 
 export const UpcommingBg = styled(Section)`
-  ${({ theme }) => css`
-    > h2 {
-      margin-top: ${theme.spacings.xlarge};
-    }
-
-    section:nth-child(3) {
-      margin-top: 7.2rem;
-      margin-bottom: ${theme.spacings.medium};
-    }
-  `}
+  section:nth-child(3) {
+    margin-top: 7.2rem;
+  }
 `
 
 export const FreeGamesBg = styled(Section)``
