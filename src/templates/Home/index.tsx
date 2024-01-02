@@ -2,8 +2,7 @@
 import * as S from "./style"
 import { Container } from "../../components/Container"
 
-import Menu from "../../components/Menu"
-import Footer from "../../components/Footer"
+import Base from "../Base"
 import BannerSlider from "../../components/BannerSlider"
 import Showcase from "../../components/Showcase"
 
@@ -19,9 +18,8 @@ type HomeProps = {
 
 export function Home({ banners, gamecardsDT, highlightsDT }: HomeProps) {
   return (
-    <section>
+    <Base>
       <Container>
-        <Menu />
         <S.SpacingsBanner>
           <BannerSlider items={banners} />
         </S.SpacingsBanner>
@@ -59,12 +57,6 @@ export function Home({ banners, gamecardsDT, highlightsDT }: HomeProps) {
           />
         </S.FreeGamesBg>
       </Container>
-
-      <S.FooterBg>
-        <Container>
-          <Footer />
-        </Container>
-      </S.FooterBg>
-    </section>
+    </Base>
   )
 }
