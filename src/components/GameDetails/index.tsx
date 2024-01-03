@@ -4,29 +4,29 @@ import * as S from "./styles"
 import Heading from "../Heading"
 import MediaMatch from "../MediaMatch"
 
-type Plataform = "linux" | "windows" | "mac"
+type Platform = "linux" | "windows" | "mac"
 type Rating = "BR0" | "BR10" | "BR12" | "BR14" | "BR16" | "BR18"
 
 export type GameDetailsProps = {
   heading: string
   company: string
   releaseDate: string
-  plataforms: Plataform[]
+  platforms: Platform[]
   publisher: string
   ratings: Rating
-  genre: string[]
+  genres: string[]
 }
 
 const GameDetails = ({
   heading,
   company,
   releaseDate,
-  plataforms,
+  platforms,
   publisher,
   ratings,
-  genre
+  genres
 }: GameDetailsProps) => {
-  const plataformsIcons = {
+  const platformsIcons = {
     linux: <Linux title="Linux" size={22} />,
     windows: <Windows title="Windows" size={22} />,
     mac: <Apple title="Mac" size={22} />
@@ -58,10 +58,10 @@ const GameDetails = ({
         </div>
 
         <div>
-          <S.Title>Plataforms</S.Title>
+          <S.Title>Platforms</S.Title>
           <S.IconWrapper>
-            {plataforms.map((icon) => (
-              <S.Icon key={icon}>{plataformsIcons[icon]}</S.Icon>
+            {platforms.map((icon) => (
+              <S.Icon key={icon}>{platformsIcons[icon]}</S.Icon>
             ))}
           </S.IconWrapper>
         </div>
@@ -80,10 +80,7 @@ const GameDetails = ({
 
         <div>
           <S.Title>Genre</S.Title>
-          {!!genre &&
-            genre.map((item, index) => (
-              <S.SubTitle key={index}>{item}</S.SubTitle>
-            ))}
+          <S.SubTitle>{genres.join(" / ")}</S.SubTitle>
         </div>
       </S.GameContainer>
     </S.Wrapper>

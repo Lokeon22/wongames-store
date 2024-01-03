@@ -11,6 +11,11 @@ export default {
     backgrounds: {
       default: "won-dark"
     }
+  },
+  argTypes: {
+    releaseDate: {
+      control: "date"
+    }
   }
 } as Meta
 

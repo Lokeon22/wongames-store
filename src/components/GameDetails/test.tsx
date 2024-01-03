@@ -6,7 +6,7 @@ import itemMock from "../GameDetails/mock"
 
 describe("<GameDetails />", () => {
   it("should render the GameDetails", () => {
-    renderWithTheme(<GameDetails {...itemMock} />)
+    const { container } = renderWithTheme(<GameDetails {...itemMock} />)
 
     expect(screen.getByText(/game details/i)).toBeInTheDocument()
 
@@ -19,7 +19,7 @@ describe("<GameDetails />", () => {
     ).toBeInTheDocument()
 
     expect(
-      screen.getByRole("heading", { name: /plataforms/i })
+      screen.getByRole("heading", { name: /platforms/i })
     ).toBeInTheDocument()
 
     expect(
@@ -27,6 +27,8 @@ describe("<GameDetails />", () => {
     ).toBeInTheDocument()
     expect(screen.getByRole("heading", { name: /rating/i })).toBeInTheDocument()
     expect(screen.getByRole("heading", { name: /genre/i })).toBeInTheDocument()
+
+    expect(container.firstChild).toMatchSnapshot()
   })
 
   it("should be render the plataformsIcons", () => {
@@ -41,5 +43,17 @@ describe("<GameDetails />", () => {
     renderWithTheme(<GameDetails {...itemMock} />)
 
     expect(screen.getByText(/nov 16, 2019/i)).toBeInTheDocument()
+  })
+
+  it("should render 18+ rating when BR18", () => {
+    renderWithTheme(<GameDetails {...itemMock} />)
+
+    expect(screen.getByText(/18+/i)).toBeInTheDocument()
+  })
+
+  it("should render a list of genres", () => {
+    renderWithTheme(<GameDetails {...itemMock} />)
+
+    expect(screen.getByText("Action / Adventure")).toBeInTheDocument()
   })
 })
