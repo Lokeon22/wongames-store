@@ -7,6 +7,7 @@ export const Wrapper = styled.menu`
     align-items: center;
     padding: ${theme.spacings.small} 0;
     position: relative;
+    z-index: ${theme.layers.menu};
   `}
 `
 
@@ -53,6 +54,7 @@ export const MenuLink = styled.a`
     margin: 0.3rem ${theme.spacings.small} 0;
     text-decoration: none;
     text-align: center;
+    z-index: ${theme.layers.menu};
 
     &:hover {
       &::after {

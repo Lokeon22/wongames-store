@@ -52,16 +52,16 @@ const modalSettings: SliderSettings = {
   slidesToShow: 1
 }
 
-type GalleryImageProps = {
+export type GalleryImageProps = {
   src: string
   label: string
 }
 
-export type GaleryProps = {
+export type GalleryProps = {
   items: GalleryImageProps[]
 }
 
-const Galery = ({ items }: GaleryProps) => {
+const Gallery = ({ items }: GalleryProps) => {
   const [isOpen, setIsOpen] = useState(false)
 
   const slider = useRef<SlickSlider>(null)
@@ -117,4 +117,4 @@ const Galery = ({ items }: GaleryProps) => {
   )
 }
 
-export default Galery
+export default Gallery
