@@ -1,5 +1,5 @@
 import { StoryFn, Meta } from "@storybook/react"
-import Gallery, { GaleryProps } from "."
+import Gallery, { GalleryProps } from "."
 
 import items from "./mock"
 
@@ -9,7 +9,7 @@ export default {
   args: { items }
 } as Meta
 
-export const Default: StoryFn<GaleryProps> = (args) => (
+export const Default: StoryFn<GalleryProps> = (args) => (
   <div style={{ maxWidth: "130rem", margin: "0 auto" }}>
     <Gallery {...args} />
   </div>

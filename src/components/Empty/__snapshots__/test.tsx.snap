@@ -1,0 +1,81 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Empty /> should render the Empty component 1`] = `
+.c0 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.c1 {
+  max-width: 100%;
+}
+
+.c2 {
+  color: #F231A5;
+  font-size: 2.8rem;
+  font-weight: 600;
+}
+
+.c3 {
+  color: #8F8F8F;
+  font-size: 2.0rem;
+  font-weight: 300;
+  margin-bottom: 3.2rem;
+}
+
+.c4 {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(189deg, #ff5f5f 0%, #f062c0 50%);
+  border-radius: 0.4rem;
+  border: 0;
+  cursor: pointer;
+  color: #FAFAFA;
+  padding: 0.8rem;
+  text-decoration: none;
+  height: 4rem;
+  font-size: 1.4rem;
+  padding: 0.8rem 3.2rem;
+}
+
+.c4:hover {
+  background: linear-gradient(180deg, #e35565 0%, #d958a6 50%);
+}
+
+<body>
+  <div>
+    <div
+      class="c0"
+    >
+      <img
+        alt="a gamer in a couch playing"
+        class="c1"
+        src="/img/empty.svg"
+      />
+      <h2
+        class="c2"
+      >
+        Title Empty
+      </h2>
+      <span
+        class="c3"
+      >
+        Description empty
+      </span>
+      <a
+        href="/"
+      >
+        <button
+          class="c4"
+        >
+          <span>
+            Go back to store
+          </span>
+        </button>
+      </a>
+    </div>
+  </div>
+</body>
+`;
