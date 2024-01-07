@@ -69,9 +69,16 @@ exports[`<CartList /> should render the heading 1`] = `
   color: #F231A5;
 }
 
+@media (max-width: 1170px) {
+  .c1 {
+    padding: 0.8rem;
+  }
+}
+
 @media (min-width: 768px) {
   .c1 {
     display: flex;
+    gap: 1rem;
   }
 }
 

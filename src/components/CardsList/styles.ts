@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components"
 
 export const Wrapper = styled.main`
-  :first-child {
+  > h2 {
     margin-bottom: 3rem;
   }
 `
@@ -14,14 +14,12 @@ export const Card = styled.div`
     display: flex;
     align-items: center;
 
-    &:not(:last-child) {
-      margin-bottom: ${theme.spacings.xsmall};
-    }
-
     > span {
       margin-left: ${theme.spacings.xxsmal};
     }
+
+    &:not(:last-child) {
+      margin-bottom: ${theme.spacings.xsmall};
+    }
   `}
 `
-
-export const CardImg = styled.img``

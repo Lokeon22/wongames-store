@@ -1,4 +1,6 @@
+"use client"
 import * as S from "./styles"
+import Image from "next/image"
 
 import Heading from "../Heading"
 import { PaymentCard } from "../PaymentOptions"
@@ -9,7 +11,7 @@ export type CardListProps = {
 
 const CardsList = ({ cards }: CardListProps) => (
   <S.Wrapper>
-    <Heading lineLeft color="black">
+    <Heading lineLeft color="black" size="small">
       My cards
     </Heading>
 
@@ -17,7 +19,7 @@ const CardsList = ({ cards }: CardListProps) => (
       cards.map((card) => {
         return (
           <S.Card key={card.number}>
-            <S.CardImg src={card.img} alt={card.flag} />
+            <Image src={card.img} alt={card.flag} width={40} height={30} />
             <span>{card.number}</span>
           </S.Card>
         )

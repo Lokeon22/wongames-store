@@ -10,6 +10,7 @@ exports[`<ProfileMenu /> should render the nav menu 1`] = `
 .c0 {
   display: flex;
   background-color: white;
+  max-height: 24rem;
 }
 
 .c0 a {

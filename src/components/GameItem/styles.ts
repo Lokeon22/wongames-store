@@ -6,10 +6,15 @@ export const Wrapper = styled.div`
     padding: ${theme.spacings.small};
     border-bottom: 0.1rem solid ${theme.colors.lightGray};
     background-color: ${theme.colors.white};
+
+    ${media.lessThan("large")`
+        padding: ${theme.spacings.xxsmal};
+    `}
   `}
 
   ${media.greaterThan("medium")`
     display: flex;
+    gap: 1rem;
   `}
 `
 
@@ -81,7 +86,6 @@ export const PaymentContent = styled.div`
   ${({ theme }) => css`
     display: flex;
     flex-direction: column;
-    min-width: 28rem;
     margin-top: ${theme.spacings.xsmall};
     color: ${theme.colors.gray};
     font-size: ${theme.font.sizes.small};

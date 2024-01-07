@@ -7,6 +7,7 @@ export const Nav = styled.nav`
   ${({ theme }) => css`
     display: flex;
     background-color: white;
+    max-height: 24rem;
 
     a {
       flex: 1;

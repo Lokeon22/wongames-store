@@ -1,3 +1,4 @@
+"use client"
 import * as S from "./styles"
 
 import Heading from "../Heading"
@@ -6,7 +7,7 @@ import Button from "../Button"
 
 const FormProfile = () => (
   <S.Wrapper>
-    <Heading lineLeft color="black">
+    <Heading lineLeft color="black" size="small">
       My profile
     </Heading>
 
