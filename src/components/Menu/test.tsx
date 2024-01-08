@@ -11,7 +11,6 @@ describe("<Menu />", () => {
 
     expect(screen.getByLabelText(/open menu/i)).toBeInTheDocument()
     expect(screen.getByLabelText(/search/i)).toBeInTheDocument()
-    expect(screen.getByLabelText(/open shopping cart/i)).toBeInTheDocument()
     expect(screen.getByRole("img", { name: /won games/i })).toBeInTheDocument()
   })
 
@@ -48,7 +47,7 @@ describe("<Menu />", () => {
     renderWithTheme(<Menu username="Gabriel" />)
 
     expect(screen.getByText(/my account/i)).toBeInTheDocument()
-    expect(screen.getByText(/wishlist/i)).toBeInTheDocument()
+    expect(screen.getAllByText(/wishlist/i)).toHaveLength(2)
 
     expect(screen.queryByText(/sign in/i)).not.toBeInTheDocument()
     expect(screen.queryByText(/sign up/i)).not.toBeInTheDocument()

@@ -1,3 +1,8 @@
+import GamesTemplate from "../../templates/Games"
+
+import gamesMock from "../../components/GameCard/mock"
+import filterMock from "../../components/ExploreSidebar/mock"
+
 export default function Games() {
-  return <h2>oi</h2>
+  return <GamesTemplate games={gamesMock} filterItems={filterMock} />
 }

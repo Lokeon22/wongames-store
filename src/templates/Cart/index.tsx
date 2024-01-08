@@ -34,7 +34,7 @@ export function Cart({ games, highlights, items, total, cards }: CartProps) {
           </Heading>
 
           <S.Content>
-            {items.length > 0 ? (
+            {items && items.length > 0 ? (
               <>
                 <CartList items={items} total={total} />
                 <PaymentOptions cards={cards} handlePayment={handlePayment} />

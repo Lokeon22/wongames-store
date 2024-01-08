@@ -2,11 +2,13 @@
 import { useState } from "react"
 import Link from "next/link"
 import { Search as SearchIcon } from "@styled-icons/material-outlined"
-import { ShoppingCart as ShoppingCartIcon } from "@styled-icons/material-outlined"
 import { Menu2 as MenuIcon } from "@styled-icons/remix-fill"
 import { Close as CloseIcon } from "@styled-icons/material-outlined"
 import MediaMatch from "../MediaMatch"
 import Button from "../Button"
+import CartDropdown from "../CartDropdown"
+import CartIcon from "../CartIcon"
+import UserDropdown from "../UserDropdown"
 
 import Logo from "../Logo"
 import * as S from "./styles"
@@ -38,7 +40,7 @@ const Menu = ({ username }: MenuProps) => {
             <S.MenuLink>Home</S.MenuLink>
           </Link>
 
-          <Link href="/explore">
+          <Link href="/games">
             <S.MenuLink>Explore</S.MenuLink>
           </Link>
         </S.MenuNav>
@@ -49,32 +51,45 @@ const Menu = ({ username }: MenuProps) => {
           <SearchIcon aria-label="Search" />
         </S.IconWrapper>
         <S.IconWrapper>
-          <ShoppingCartIcon aria-label="Open Shopping Cart" />
-        </S.IconWrapper>
-        {!username && (
           <MediaMatch greaterThan="medium">
+            <CartDropdown />
+          </MediaMatch>
+          <MediaMatch lessThan="medium">
+            <Link href="/cart">
+              <CartIcon />
+            </Link>
+          </MediaMatch>
+        </S.IconWrapper>
+        <MediaMatch greaterThan="medium">
+          {!username ? (
             <Link href="/signin">
               <Button>Sign in</Button>
             </Link>
-          </MediaMatch>
-        )}
+          ) : (
+            <UserDropdown username={username} />
+          )}
+        </MediaMatch>
       </S.MenuGroup>
 
       <S.MenuFull aria-hidden={!isOpen} isOpen={isOpen}>
         <CloseIcon aria-label="Close Menu" onClick={() => setIsOpen(false)} />
         <S.MenuNav>
-          <Link style={{ marginBottom: "2rem" }} href="/">
+          <Link style={{ marginBottom: "1rem" }} href="/">
             <S.MenuLink>Home</S.MenuLink>
           </Link>
 
-          <Link href="/explore">
+          <Link style={{ marginBottom: "1rem" }} href="/games">
             <S.MenuLink>Explore</S.MenuLink>
           </Link>
 
           {!!username && (
             <>
-              <S.MenuLink>My account</S.MenuLink>
-              <S.MenuLink>Wishlist</S.MenuLink>
+              <Link style={{ marginBottom: "1rem" }} href="/profile/me">
+                <S.MenuLink>My account</S.MenuLink>
+              </Link>
+              <Link href="/wishlist">
+                <S.MenuLink>Wishlist</S.MenuLink>
+              </Link>
             </>
           )}
         </S.MenuNav>

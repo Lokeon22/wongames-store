@@ -44,6 +44,10 @@ export const Overlay = styled.div`
 
 export const Items = styled.div`
   ${({ theme }) => css`
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+
     & > div:not(:last-of-type) {
       margin-bottom: ${theme.spacings.xsmall};
     }
