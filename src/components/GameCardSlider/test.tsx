@@ -6,32 +6,36 @@ import GameCardSlider from "."
 
 const items: GameCardProps[] = [
   {
+    slug: "red dead",
     image: "https://source.unsplash.com/user/willianjusten/300x142",
     title: "Red Dead Redemption",
     developer: "Rockstar Games",
-    price: "R$ 235,00",
-    promotionalPrice: "R$ 215,00"
+    price: 235,
+    promotionalPrice: 215
   },
   {
+    slug: "red dead 2",
     image: "https://source.unsplash.com/user/willianjusten/300x143",
     title: "Red Dead Redemption 2",
     developer: "Rockstar Games 2",
-    price: "R$ 235,00",
-    promotionalPrice: "R$ 215,00"
+    price: 235,
+    promotionalPrice: 215
   },
   {
+    slug: "red dead 3",
     image: "https://source.unsplash.com/user/willianjusten/300x144",
     title: "Red Dead Redemption 3",
     developer: "Rockstar Games 3",
-    price: "R$ 235,00",
-    promotionalPrice: "R$ 215,00"
+    price: 235,
+    promotionalPrice: 215
   },
   {
+    slug: "red dead 4",
     image: "https://source.unsplash.com/user/willianjusten/300x145",
     title: "Red Dead Redemption 4",
     developer: "Rockstar Games 4",
-    price: "R$ 235,00",
-    promotionalPrice: "R$ 215,00"
+    price: 235,
+    promotionalPrice: 215
   }
 ]
 

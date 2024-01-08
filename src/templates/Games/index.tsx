@@ -1,5 +1,5 @@
 "use client"
-import { ArrowDown } from "@styled-icons/remix-fill"
+import { ChevronRight } from "@styled-icons/material-outlined"
 import * as S from "./styles"
 
 import { GameCardProps } from "../../components/GameCard"
@@ -43,7 +43,10 @@ function GamesTemplate({ games = [], filterItems }: GamesTemplateProps) {
             {games.length > 0 && (
               <S.Showmore role="button" onClick={() => {}}>
                 <p>Show more</p>
-                <ArrowDown size={32} />
+                <ChevronRight
+                  style={{ rotate: "90deg", color: "#F231A5" }}
+                  size={32}
+                />
               </S.Showmore>
             )}
           </section>

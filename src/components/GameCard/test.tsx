@@ -4,10 +4,11 @@ import { renderWithTheme } from "../../utils/tests/helpers"
 import GameCard from "."
 
 const props = {
+  slug: "read-dead-2",
   image: "/img/red-dead.png",
-  title: "Red dead",
+  title: "Read dead",
   developer: "Rockstar Games",
-  price: "235,00"
+  price: 235
 }
 
 describe("<GameCard />", () => {
@@ -18,41 +19,46 @@ describe("<GameCard />", () => {
       screen.getByRole("heading", { name: props.title })
     ).toBeInTheDocument()
 
+    expect(screen.getByRole("link")).toHaveAttribute(
+      "href",
+      `/game/${props.slug}`
+    )
+
     expect(
       screen.getByRole("heading", { name: props.developer })
     ).toBeInTheDocument()
 
     expect(screen.getByRole("img")).toHaveAttribute("src", props.image)
-    expect(screen.getByText(props.price)).toBeInTheDocument()
+    expect(screen.getByText("$235.00")).toBeInTheDocument()
   })
 
   it("should render price in label default", () => {
     renderWithTheme(<GameCard {...props} />)
 
-    expect(screen.getByText(`${props.price}`)).not.toHaveStyle({
+    expect(screen.getByText("$235.00")).not.toHaveStyle({
       textDecoration: "line-through"
     })
 
-    expect(screen.getByText(`${props.price}`)).not.toHaveStyle({
+    expect(screen.getByText("$235.00")).not.toHaveStyle({
       color: "#8F8F8F"
     })
 
-    expect(screen.getByText(`${props.price}`)).toHaveStyle({
+    expect(screen.getByText("$235.00")).toHaveStyle({
       backgroundColor: "#3CD3C1"
     })
   })
 
   it("should render a line-through in price when promotional", () => {
-    renderWithTheme(<GameCard {...props} promotionalPrice="215,00" />)
+    renderWithTheme(<GameCard {...props} promotionalPrice={215} />)
 
-    expect(screen.getByText(`${props.price}`)).toBeInTheDocument()
-    expect(screen.getByText("215,00")).toBeInTheDocument()
+    expect(screen.getByText("$235.00")).toBeInTheDocument()
+    expect(screen.getByText("$215.00")).toBeInTheDocument()
 
-    expect(screen.getByText(`${props.price}`)).toHaveStyle({
+    expect(screen.getByText("$235.00")).toHaveStyle({
       textDecoration: "line-through"
     })
 
-    expect(screen.getByText("215,00")).not.toHaveStyle({
+    expect(screen.getByText("$215.00")).not.toHaveStyle({
       textDecoration: "line-through"
     })
   })

@@ -1,3 +1,5 @@
+import Link from "next/link"
+
 import {
   Favorite,
   FavoriteBorder,
@@ -9,13 +11,15 @@ import Button from "../Button"
 import Ribbon from "../Ribbon"
 
 import { RibbonSizes, RibbonColors } from "../Ribbon"
+import { formatPrice } from "../../utils/formatprice"
 
 export type GameCardProps = {
+  slug: string
   image: string
   title: string
   developer: string
-  price: string
-  promotionalPrice?: string
+  price: number
+  promotionalPrice?: number
   favorite?: boolean
   onFav?: () => void
   ribbon?: React.ReactNode
@@ -24,6 +28,7 @@ export type GameCardProps = {
 }
 
 const GameCard = ({
+  slug,
   image,
   title,
   developer,
@@ -41,9 +46,11 @@ const GameCard = ({
         {ribbon}
       </Ribbon>
     )}
-    <S.ImageBox>
-      <S.Image src={image} alt={title} />
-    </S.ImageBox>
+    <Link href={`/game/${slug}`}>
+      <S.ImageBox>
+        <S.Image src={image} alt={title} />
+      </S.ImageBox>
+    </Link>
 
     <S.Content>
       <S.Info>
@@ -60,8 +67,16 @@ const GameCard = ({
       </S.FavButton>
 
       <S.BuyBox>
-        {!!promotionalPrice && <S.Price isPromotional>{price}</S.Price>}
-        <S.Price>{promotionalPrice || price}</S.Price>
+        {!!promotionalPrice && (
+          <S.Price isPromotional>{formatPrice(price)}</S.Price>
+        )}
+        <S.Price>
+          {price === 0 ? (
+            "FREE"
+          ) : (
+            <>{formatPrice(promotionalPrice || price)} </>
+          )}
+        </S.Price>
         <Button icon={<AddShoppingCart />} size="small" />
       </S.BuyBox>
     </S.Content>

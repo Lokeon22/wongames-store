@@ -1,33 +1,38 @@
 const games = [
   {
+    slug: "red dead",
     image: "/img/red-dead.png",
     title: "Red Dead Redemption",
     developer: "Rockstar Games",
-    price: "R$ 235,00"
+    price: 235
   },
   {
+    slug: "red dead",
     image: "/img/red-dead.png",
     title: "Red Dead Redemption",
     developer: "Rockstar Games",
-    price: "R$ 235,00"
+    price: 235
   },
   {
+    slug: "red dead",
     image: "/img/red-dead.png",
     title: "Red Dead Redemption",
     developer: "Rockstar Games",
-    price: "R$ 235,00"
+    price: 235
   },
   {
+    slug: "red dead",
     image: "/img/red-dead.png",
     title: "Red Dead Redemption",
     developer: "Rockstar Games",
-    price: "R$ 235,00"
+    price: 235
   },
   {
+    slug: "red dead",
     image: "/img/red-dead.png",
     title: "Red Dead Redemption",
     developer: "Rockstar Games",
-    price: "R$ 235,00"
+    price: 235
   }
 ]
 

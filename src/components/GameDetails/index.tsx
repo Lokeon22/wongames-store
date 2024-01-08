@@ -4,8 +4,8 @@ import * as S from "./styles"
 import Heading from "../Heading"
 import MediaMatch from "../MediaMatch"
 
-type Platform = "linux" | "windows" | "mac"
-type Rating = "BR0" | "BR10" | "BR12" | "BR14" | "BR16" | "BR18"
+export type Platform = "linux" | "windows" | "mac"
+export type Rating = "BR0" | "BR10" | "BR12" | "BR14" | "BR16" | "BR18"
 
 export type GameDetailsProps = {
   heading: string
