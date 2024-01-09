@@ -12,11 +12,25 @@ import { HighlightProps } from "../../components/Highlight"
 
 type HomeProps = {
   banners: BannerProps[]
-  highlightsDT: HighlightProps
-  gamecardsDT: GameCardProps[]
+  newGames: GameCardProps[]
+  popularGames: GameCardProps[]
+  popularHighlights: HighlightProps
+  upcomingGames: GameCardProps[]
+  upcomingHighlights: HighlightProps
+  lowpriceGames: GameCardProps[]
+  lowpriceHighlights: HighlightProps
 }
 
-export function Home({ banners, gamecardsDT, highlightsDT }: HomeProps) {
+export function Home({
+  banners,
+  newGames,
+  popularGames,
+  popularHighlights,
+  upcomingGames,
+  upcomingHighlights,
+  lowpriceGames,
+  lowpriceHighlights
+}: HomeProps) {
   return (
     <Base>
       <Container>
@@ -29,7 +43,7 @@ export function Home({ banners, gamecardsDT, highlightsDT }: HomeProps) {
         <Container>
           <Showcase
             headtitle="News"
-            gamecards={gamecardsDT}
+            gamecards={newGames}
             gamecards_color="black"
           />
         </Container>
@@ -39,21 +53,21 @@ export function Home({ banners, gamecardsDT, highlightsDT }: HomeProps) {
         <S.MostPopularBg>
           <Showcase
             headtitle="Most Popular"
-            highlights={highlightsDT}
-            gamecards={gamecardsDT}
+            highlights={popularHighlights}
+            gamecards={popularGames}
           />
         </S.MostPopularBg>
 
         <S.UpcommingBg>
-          <Showcase headtitle="Upcoming" gamecards={gamecardsDT} />
-          <Showcase highlights={highlightsDT} gamecards={gamecardsDT} />
+          <Showcase headtitle="Upcoming" gamecards={upcomingGames} />
+          <Showcase highlights={upcomingHighlights} gamecards={upcomingGames} />
         </S.UpcommingBg>
 
         <S.FreeGamesBg>
           <Showcase
             headtitle="Free Games"
-            highlights={highlightsDT}
-            gamecards={gamecardsDT}
+            highlights={lowpriceHighlights}
+            gamecards={lowpriceGames}
           />
         </S.FreeGamesBg>
       </Container>

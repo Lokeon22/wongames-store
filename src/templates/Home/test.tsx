@@ -9,8 +9,13 @@ import highlightMock from "../../components/Highlight/mock"
 
 const data = {
   banners: bannersMock,
-  highlightsDT: highlightMock,
-  gamecardsDT: gamesMock
+  newGames: gamesMock,
+  popularGames: gamesMock,
+  popularHighlights: highlightMock,
+  upcomingGames: gamesMock,
+  upcomingHighlights: highlightMock,
+  lowpriceGames: gamesMock,
+  lowpriceHighlights: highlightMock
 }
 
 jest.mock("components/Showcase", () => {

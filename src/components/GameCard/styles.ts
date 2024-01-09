@@ -1,5 +1,7 @@
 import styled, { css, DefaultTheme } from "styled-components"
 
+import media from "styled-media-query"
+
 export const Wrapper = styled.div`
   ${({ theme }) => css`
     position: relative;
@@ -49,8 +51,13 @@ export const Content = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    min-height: 10rem;
     height: 100%;
     margin: ${theme.spacings.xsmall};
+
+    ${media.lessThan("medium")`
+      height: 100%;
+    `}
   `}
 `
 

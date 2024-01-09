@@ -31,3 +31,7 @@ type GamesData = {
 export type ApiResponse = {
   games: GamesData
 }
+
+export type HomeNewGamesProps = {
+  data: GameAttributes[]
+}

@@ -6,6 +6,8 @@ import { QUERY_GAME_BY_SLUG } from "../../../graphql/queries/games"
 import { initializeApollo } from "../../../utils/apolo"
 import { Platform } from "../../../components/GameDetails"
 
+import NotFound from "../../../app/not-found"
+
 const apolloClient = initializeApollo()
 
 type ParamsProps = {
@@ -36,6 +38,8 @@ async function generateStaticParams({ params }: ParamsProps) {
       }
     }
   })
+
+  if (data.length <= 0) return null
 
   const game = data[0].attributes
 
@@ -70,6 +74,8 @@ async function generateStaticParams({ params }: ParamsProps) {
 
 export default async function Game({ params }: ParamsProps) {
   const data = await generateStaticParams({ params })
+
+  if (!data) return <NotFound />
 
   return <GameContent {...data} />
 }
