@@ -1,8 +1,11 @@
 "use client"
-import { ChevronRight } from "@styled-icons/material-outlined"
-import * as S from "./styles"
+import { initializeApollo } from "../../utils/apolo"
+import { useQuery } from "@apollo/client"
+import { ApiResponse } from "../../graphql/gqltypes/queryGameType"
+import { QUERY_GAMES } from "../../graphql/queries/games"
 
-import { GameCardProps } from "../../components/GameCard"
+import * as S from "./styles"
+import { ChevronRight } from "@styled-icons/material-outlined"
 import { Container } from "../../components/Container"
 
 import Base from "../Base"
@@ -11,11 +14,23 @@ import GameCard from "../../components/GameCard"
 import Empty from "../../components/Empty"
 
 export type GamesTemplateProps = {
-  games?: GameCardProps[]
+  apolloInitialState?: string
   filterItems: ItemProps[]
 }
 
-function GamesTemplate({ games = [], filterItems }: GamesTemplateProps) {
+function GamesTemplate({
+  filterItems,
+  apolloInitialState
+}: GamesTemplateProps) {
+  const apolloClient = apolloInitialState
+    ? initializeApollo(JSON.parse(apolloInitialState))
+    : initializeApollo()
+
+  const { data } = useQuery<ApiResponse>(QUERY_GAMES, {
+    client: apolloClient,
+    variables: { limit: 15 }
+  })
+
   const onFilter = () => {}
 
   //const handleShowMore = () => {}
@@ -28,9 +43,18 @@ function GamesTemplate({ games = [], filterItems }: GamesTemplateProps) {
 
           <section>
             <S.GameContainer>
-              {games.length > 0 ? (
-                games.map((game) => {
-                  return <GameCard key={game.title} {...game} />
+              {data && data.games.data.length > 0 ? (
+                data.games.data.map(({ attributes }) => {
+                  return (
+                    <GameCard
+                      key={attributes.slug}
+                      slug={attributes.slug}
+                      title={attributes.name}
+                      image={`http://localhost:1337${attributes.cover.data.attributes.url}`}
+                      price={attributes.price}
+                      developer={attributes.developers.data[0].attributes.name}
+                    />
+                  )
                 })
               ) : (
                 <Empty
@@ -40,7 +64,7 @@ function GamesTemplate({ games = [], filterItems }: GamesTemplateProps) {
               )}
             </S.GameContainer>
 
-            {games.length > 0 && (
+            {data && data.games.data.length > 0 && (
               <S.Showmore role="button" onClick={() => {}}>
                 <p>Show more</p>
                 <ChevronRight

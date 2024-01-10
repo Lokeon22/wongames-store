@@ -17,12 +17,20 @@ import { GameCardProps } from "../../components/GameCard"
 import { HighlightProps } from "../../components/Highlight"
 
 export type CartProps = {
+  recommendedTitle: string
   games: GameCardProps[]
   highlights: HighlightProps
 } & CartListProps &
   Pick<PaymentOptionsProps, "cards">
 
-export function Cart({ games, highlights, items, total, cards }: CartProps) {
+export function Cart({
+  games,
+  recommendedTitle,
+  highlights,
+  items,
+  total,
+  cards
+}: CartProps) {
   const handlePayment = () => ({})
 
   return (
@@ -51,7 +59,7 @@ export function Cart({ games, highlights, items, total, cards }: CartProps) {
           <Divider />
           <S.SectionShowCase>
             <Showcase
-              headtitle="You may like these games"
+              headtitle={recommendedTitle}
               highlights={highlights}
               gamecards={games}
             />

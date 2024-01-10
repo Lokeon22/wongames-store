@@ -7,6 +7,7 @@ import highlightsMock from "../../components/Highlight/mock"
 
 const props = {
   games: gamesMock,
+  recommendedTitle: "Game",
   recommendedGames: gamesMock,
   recommendedHighlights: highlightsMock
 }
@@ -33,6 +34,7 @@ describe("<Wishlist />", () => {
   it("should render empty when there are no games", () => {
     renderWithTheme(
       <Wishlist
+        recommendedTitle={props.recommendedTitle}
         recommendedGames={props.recommendedGames}
         recommendedHighlights={props.recommendedHighlights}
       />

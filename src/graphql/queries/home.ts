@@ -4,7 +4,7 @@ import { GameFragment } from "../fragments/game"
 import { HighlightFragment } from "../fragments/highlight"
 
 export const QUERY_HOME_BANNERS = gql`
-  query Home {
+  query Home($date: Date!) {
     banners {
       data {
         attributes {
@@ -14,7 +14,7 @@ export const QUERY_HOME_BANNERS = gql`
     }
 
     newGames: games(
-      filters: { release_date: { gt: "2021-01-01" } }
+      filters: { release_date: { gt: $date } }
       sort: "release_date:desc"
       pagination: { limit: 8 }
     ) {
@@ -26,7 +26,7 @@ export const QUERY_HOME_BANNERS = gql`
     }
 
     upcomingGames: games(
-      filters: { release_date: { gt: "2021-01-01" } }
+      filters: { release_date: { gt: $date } }
       sort: "release_date:asc"
       pagination: { limit: 8 }
     ) {

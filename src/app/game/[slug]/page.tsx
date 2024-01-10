@@ -1,10 +1,15 @@
+import { initializeApollo } from "../../../utils/apolo"
 import { Game as GameContent } from "../../../templates/Game"
-import highlightMock from "../../../components/Highlight/mock"
 
 import { ApiResponse } from "../../../graphql/gqltypes/queryGameBySlugType"
+import { RecommendedGamesProps } from "../../../graphql/gqltypes/queryRecommendedType"
+import { UpcomingGamesProps } from "../../../graphql/gqltypes/queryUpcomingType"
 import { QUERY_GAME_BY_SLUG } from "../../../graphql/queries/games"
-import { initializeApollo } from "../../../utils/apolo"
+import { QUERY_RECOMMENDED_GAMES } from "../../../graphql/queries/recommended"
+import { QUERY_UPCOMING } from "../../../graphql/queries/upcoming"
+
 import { Platform } from "../../../components/GameDetails"
+import { gamesMapper, highlightsMapper } from "../../../utils/mappers"
 
 import NotFound from "../../../app/not-found"
 
@@ -13,16 +18,6 @@ const apolloClient = initializeApollo()
 type ParamsProps = {
   params: { slug: string }
 }
-
-const gameMock = [
-  {
-    slug: "read-dead-2",
-    image: "/img/red-dead.png",
-    title: "Red Dead Redemption",
-    developer: "Rockstar Games",
-    price: 235
-  }
-]
 
 async function generateStaticParams({ params }: ParamsProps) {
   const {
@@ -39,9 +34,37 @@ async function generateStaticParams({ params }: ParamsProps) {
     }
   })
 
-  if (data.length <= 0) return null
+  if (data.length <= 0) return
 
   const game = data[0].attributes
+
+  const {
+    data: {
+      recommended: { data: recommended }
+    }
+  } = await apolloClient.query<RecommendedGamesProps>({
+    query: QUERY_RECOMMENDED_GAMES,
+    context: {
+      fetchOptions: {
+        next: { revalidate: 60 * 60 }
+      }
+    }
+  })
+
+  const {
+    data: {
+      upcomingGames: { data: upcomingGames },
+      showcase: { data: upcomingHighlight }
+    }
+  } = await apolloClient.query<UpcomingGamesProps>({
+    query: QUERY_UPCOMING,
+    variables: { date: "2021-01-01" },
+    context: {
+      fetchOptions: {
+        next: { revalidate: 60 * 60 }
+      }
+    }
+  })
 
   return {
     cover: `http://localhost:1337${game.cover.data.attributes.url}`,
@@ -66,9 +89,13 @@ async function generateStaticParams({ params }: ParamsProps) {
       ratings: game.rating,
       genres: game.categories.data.map((category) => category.attributes.name)
     },
-    upcomingGames: gameMock,
-    upcomingHighlight: highlightMock,
-    recommendedGames: gameMock
+    upcomingTitle: upcomingHighlight.attributes.upcomingGames.title,
+    upcomingGames: gamesMapper(upcomingGames),
+    upcomingHighlight: highlightsMapper(
+      upcomingHighlight.attributes.upcomingGames.highlight
+    ),
+    recommendedTitle: recommended.attributes.section.title,
+    recommendedGames: gamesMapper(recommended.attributes.section.games.data)
   }
 }
 

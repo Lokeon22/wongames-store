@@ -8,13 +8,10 @@ import filterMock from "../../components/ExploreSidebar/mock"
 export default async function Games() {
   const apolloClient = initializeApollo()
 
-  const {
-    data: {
-      games: { data }
-    }
-  } = await apolloClient.query<ApiResponse>({
+  await apolloClient.query<ApiResponse>({
     query: QUERY_GAMES,
-    variables: { limit: 9 },
+
+    variables: { limit: 15 },
     context: {
       fetchOptions: {
         next: { revalidate: 60 * 60 * 24 }
@@ -22,15 +19,12 @@ export default async function Games() {
     }
   })
 
-  const games = data.map((game) => {
-    return {
-      title: game.attributes.name,
-      slug: game.attributes.slug,
-      developer: game.attributes.developers.data[0].attributes.name,
-      image: `http://localhost:1337${game.attributes.cover.data.attributes.url}`,
-      price: game.attributes.price
-    }
-  })
+  const apolloInitialState = JSON.stringify(apolloClient.cache.extract())
 
-  return <GamesTemplate games={games} filterItems={filterMock} />
+  return (
+    <GamesTemplate
+      apolloInitialState={apolloInitialState}
+      filterItems={filterMock}
+    />
+  )
 }

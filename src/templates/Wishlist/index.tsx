@@ -13,12 +13,14 @@ import { HighlightProps } from "../../components/Highlight"
 
 type WishlistTemplateProps = {
   games?: GameCardProps[]
+  recommendedTitle: string
   recommendedGames: GameCardProps[]
   recommendedHighlights: HighlightProps
 }
 
 export function Wishlist({
   games,
+  recommendedTitle,
   recommendedGames,
   recommendedHighlights
 }: WishlistTemplateProps) {
@@ -46,7 +48,7 @@ export function Wishlist({
         <S.LikeGames>
           <Divider />
           <Showcase
-            headtitle="You may like these games"
+            headtitle={recommendedTitle}
             highlights={recommendedHighlights}
             gamecards={recommendedGames}
           />

@@ -8,7 +8,7 @@ type Background = {
   }
 }
 
-type HighlightProps = {
+export type HighlightProps = {
   title: string
   subtitle: string
   background: Background

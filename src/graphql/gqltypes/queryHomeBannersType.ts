@@ -20,7 +20,7 @@ type Ribbon = {
   size: "normal" | "small"
 }
 
-type BannersAttributes = {
+export type BannersAttributes = {
   attributes: {
     image: Image
     title: string
