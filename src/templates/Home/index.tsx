@@ -12,22 +12,30 @@ import { HighlightProps } from "../../components/Highlight"
 
 type HomeProps = {
   banners: BannerProps[]
+  newGamesTitle: string
   newGames: GameCardProps[]
+  popularGamesTitle: string
   popularGames: GameCardProps[]
   popularHighlights: HighlightProps
+  upcomingGamesTitle: string
   upcomingGames: GameCardProps[]
   upcomingHighlights: HighlightProps
+  lowpriceGamesTitle: string
   lowpriceGames: GameCardProps[]
   lowpriceHighlights: HighlightProps
 }
 
 export function Home({
   banners,
+  newGamesTitle,
   newGames,
+  popularGamesTitle,
   popularGames,
   popularHighlights,
+  upcomingGamesTitle,
   upcomingGames,
   upcomingHighlights,
+  lowpriceGamesTitle,
   lowpriceGames,
   lowpriceHighlights
 }: HomeProps) {
@@ -42,7 +50,7 @@ export function Home({
       <S.NewsBg>
         <Container>
           <Showcase
-            headtitle="News"
+            headtitle={newGamesTitle}
             gamecards={newGames}
             gamecards_color="black"
           />
@@ -52,20 +60,23 @@ export function Home({
       <Container>
         <S.MostPopularBg>
           <Showcase
-            headtitle="Most Popular"
+            headtitle={popularGamesTitle}
             highlights={popularHighlights}
             gamecards={popularGames}
           />
         </S.MostPopularBg>
 
         <S.UpcommingBg>
-          <Showcase headtitle="Upcoming" gamecards={upcomingGames} />
-          <Showcase highlights={upcomingHighlights} gamecards={upcomingGames} />
+          <Showcase
+            headtitle={upcomingGamesTitle}
+            gamecards={upcomingGames}
+            highlights={upcomingHighlights}
+          />
         </S.UpcommingBg>
 
         <S.FreeGamesBg>
           <Showcase
-            headtitle="Free Games"
+            headtitle={lowpriceGamesTitle}
             highlights={lowpriceHighlights}
             gamecards={lowpriceGames}
           />

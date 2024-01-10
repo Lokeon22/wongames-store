@@ -1,4 +1,5 @@
-import { HomeNewGamesProps } from "./queryGameType"
+import { HomeGamesProps } from "./queryGameType"
+import { SectionsHighlightProps } from "./queryHighlightType"
 
 type Image = {
   data: {
@@ -33,7 +34,10 @@ type BannersData = {
   data: BannersAttributes[]
 }
 
-export type HomeBannersProps = {
+export type HomeDataProps = {
   banners: BannersData
-  newGames: HomeNewGamesProps
+  newGames: HomeGamesProps
+  upcomingGames: HomeGamesProps
+  lowpriceGames: HomeGamesProps
+  sections: SectionsHighlightProps
 }

@@ -12,7 +12,7 @@ type Cover = {
   }
 }
 
-type GameAttributes = {
+export type GameAttributes = {
   attributes: {
     name: string
     slug: string
@@ -32,6 +32,6 @@ export type ApiResponse = {
   games: GamesData
 }
 
-export type HomeNewGamesProps = {
+export type HomeGamesProps = {
   data: GameAttributes[]
 }

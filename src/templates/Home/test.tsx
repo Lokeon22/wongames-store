@@ -10,12 +10,16 @@ import highlightMock from "../../components/Highlight/mock"
 const data = {
   banners: bannersMock,
   newGames: gamesMock,
+  newGamesTitle: "New Games",
   popularGames: gamesMock,
   popularHighlights: highlightMock,
+  popularGamesTitle: "Most Popular Games",
   upcomingGames: gamesMock,
   upcomingHighlights: highlightMock,
+  upcomingGamesTitle: "Upcoming Games",
   lowpriceGames: gamesMock,
-  lowpriceHighlights: highlightMock
+  lowpriceHighlights: highlightMock,
+  lowpriceGamesTitle: "Under $2"
 }
 
 jest.mock("components/Showcase", () => {
@@ -41,6 +45,6 @@ describe("<Home />", () => {
     renderWithTheme(<Home {...data} />)
 
     expect(screen.getByTestId("Mock BannerSlider")).toBeInTheDocument()
-    expect(screen.getAllByTestId("Mock Showcase")).toHaveLength(5)
+    expect(screen.getAllByTestId("Mock Showcase")).toHaveLength(4)
   })
 })
