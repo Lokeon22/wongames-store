@@ -1,11 +1,11 @@
 "use client"
 import { useState } from "react"
-import { initializeApollo } from "../../utils/apolo"
 import { useQueryGames } from "../../graphql/queries/games"
 
 import * as S from "./styles"
 import { ChevronRight } from "@styled-icons/material-outlined"
 import { Container } from "../../components/Container"
+import { Values } from "../../components/ExploreSidebar"
 
 import Base from "../Base"
 import ExploreSidebar, { ItemProps } from "../../components/ExploreSidebar"
@@ -17,24 +17,29 @@ export type GamesTemplateProps = {
   filterItems: ItemProps[]
 }
 
-function GamesTemplate({
-  filterItems,
-  apolloInitialState
-}: GamesTemplateProps) {
+function GamesTemplate({ filterItems }: GamesTemplateProps) {
   const [gameLenght, setGameLenght] = useState<number>(15)
 
-  const apolloClient = apolloInitialState
-    ? initializeApollo(JSON.parse(apolloInitialState))
-    : initializeApollo()
-
   const { data, fetchMore } = useQueryGames({
-    client: apolloClient,
     variables: {
-      limit: gameLenght
+      limit: gameLenght,
+      where_name: "",
+      where_price: 99,
+      where_category: "",
+      sort: "price:desc"
     }
   })
 
-  const onFilter = () => {}
+  const onFilter = (values: Values) => {
+    fetchMore({
+      variables: {
+        where_price: values.where_price,
+        sort: values.sort ? values.sort : "price:asc"
+      }
+    })
+
+    return
+  }
 
   const handleShowMore = () => {
     fetchMore({
@@ -53,7 +58,11 @@ function GamesTemplate({
     <Base>
       <Container>
         <S.Wrapper>
-          <ExploreSidebar items={filterItems} onFilter={onFilter} />
+          <ExploreSidebar
+            initialValues={{ windows: true }}
+            items={filterItems}
+            onFilter={onFilter}
+          />
 
           <section>
             <S.GameContainer>

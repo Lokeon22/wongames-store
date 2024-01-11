@@ -13,16 +13,16 @@ import Button from "../Button"
 export type ItemProps = {
   title: string
   name: string
-  type: "checkbox" | "radio"
+  type: string
   fields: Fields[]
 }
 
-type Fields = {
+export type Fields = {
   label: string
   name: string
 }
 
-type Values = {
+export type Values = {
   [field: string]: boolean | string
 }
 
@@ -44,8 +44,7 @@ const ExploreSidebar = ({
     setValues((s) => ({ ...s, [name]: value }))
   }
 
-  const handleFilter = () => {
-    onFilter(values)
+  const handleFilterMenu = () => {
     setIsOpen(false)
   }
 
@@ -85,7 +84,9 @@ const ExploreSidebar = ({
                   name={item.name}
                   label={field.label}
                   labelFor={field.name}
-                  defaultChecked={field.name === values[item.name]}
+                  defaultChecked={
+                    String(field.name) === String(values[item.name])
+                  }
                   onChange={() => handleChange(item.name, field.name)}
                 />
               ))}
@@ -94,7 +95,14 @@ const ExploreSidebar = ({
       </S.Content>
 
       <S.Footer>
-        <Button fullWidth size="medium" onClick={handleFilter}>
+        <Button
+          fullWidth
+          size="medium"
+          onClick={() => {
+            onFilter(values)
+            handleFilterMenu()
+          }}
+        >
           Filter
         </Button>
       </S.Footer>

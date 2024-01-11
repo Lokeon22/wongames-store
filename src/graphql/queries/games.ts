@@ -77,10 +77,6 @@ export const QUERY_GAME_BY_SLUG = gql`
   }
 `
 
-export function useQueryGames(options?: SuspenseQueryHookOptions<ApiResponse>) {
-  return useSuspenseQuery<ApiResponse>(QUERY_GAMES, options)
-}
-
 export const QUERY_GAMES_FILTERED = gql`
   query QueryGames(
     $limit: Int!
@@ -88,6 +84,7 @@ export const QUERY_GAMES_FILTERED = gql`
     $where_name: String!
     $where_price: Float!
     $where_category: String!
+    $sort: [String!]
   ) {
     games(
       pagination: { limit: $limit, start: $start }
@@ -96,6 +93,7 @@ export const QUERY_GAMES_FILTERED = gql`
         price: { lte: $where_price }
         categories: { name: { containsi: $where_category } }
       }
+      sort: $sort
     ) {
       data {
         attributes {
@@ -104,4 +102,9 @@ export const QUERY_GAMES_FILTERED = gql`
       }
     }
   }
+  ${GameFragment}
 `
+
+export function useQueryGames(options?: SuspenseQueryHookOptions<ApiResponse>) {
+  return useSuspenseQuery<ApiResponse>(QUERY_GAMES_FILTERED, options)
+}
