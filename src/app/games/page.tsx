@@ -10,13 +10,7 @@ export default async function Games() {
 
   await apolloClient.query<ApiResponse>({
     query: QUERY_GAMES,
-
-    variables: { limit: 15 },
-    context: {
-      fetchOptions: {
-        next: { revalidate: 60 * 60 * 24 }
-      }
-    }
+    variables: { limit: 15 }
   })
 
   const apolloInitialState = JSON.stringify(apolloClient.cache.extract())

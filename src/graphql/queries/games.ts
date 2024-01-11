@@ -1,9 +1,12 @@
-import { gql } from "@apollo/client"
+import { SuspenseQueryHookOptions, gql } from "@apollo/client"
 import { GameFragment } from "../fragments/game"
 
+import { useSuspenseQuery } from "@apollo/client"
+import { ApiResponse } from "../gqltypes/queryGameType"
+
 export const QUERY_GAMES = gql`
-  query QueryGames($limit: Int!) {
-    games(pagination: { limit: $limit }) {
+  query QueryGames($limit: Int!, $start: Int) {
+    games(pagination: { limit: $limit, start: $start }) {
       data {
         attributes {
           ...GameFragment
@@ -68,6 +71,35 @@ export const QUERY_GAME_BY_SLUG = gql`
               }
             }
           }
+        }
+      }
+    }
+  }
+`
+
+export function useQueryGames(options?: SuspenseQueryHookOptions<ApiResponse>) {
+  return useSuspenseQuery<ApiResponse>(QUERY_GAMES, options)
+}
+
+export const QUERY_GAMES_FILTERED = gql`
+  query QueryGames(
+    $limit: Int!
+    $start: Int
+    $where_name: String!
+    $where_price: Float!
+    $where_category: String!
+  ) {
+    games(
+      pagination: { limit: $limit, start: $start }
+      filters: {
+        name: { containsi: $where_name }
+        price: { lte: $where_price }
+        categories: { name: { containsi: $where_category } }
+      }
+    ) {
+      data {
+        attributes {
+          ...GameFragment
         }
       }
     }

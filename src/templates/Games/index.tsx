@@ -1,8 +1,7 @@
 "use client"
+import { useState } from "react"
 import { initializeApollo } from "../../utils/apolo"
-import { useQuery } from "@apollo/client"
-import { ApiResponse } from "../../graphql/gqltypes/queryGameType"
-import { QUERY_GAMES } from "../../graphql/queries/games"
+import { useQueryGames } from "../../graphql/queries/games"
 
 import * as S from "./styles"
 import { ChevronRight } from "@styled-icons/material-outlined"
@@ -22,18 +21,33 @@ function GamesTemplate({
   filterItems,
   apolloInitialState
 }: GamesTemplateProps) {
+  const [gameLenght, setGameLenght] = useState<number>(15)
+
   const apolloClient = apolloInitialState
     ? initializeApollo(JSON.parse(apolloInitialState))
     : initializeApollo()
 
-  const { data } = useQuery<ApiResponse>(QUERY_GAMES, {
+  const { data, fetchMore } = useQueryGames({
     client: apolloClient,
-    variables: { limit: 15 }
+    variables: {
+      limit: gameLenght
+    }
   })
 
   const onFilter = () => {}
 
-  //const handleShowMore = () => {}
+  const handleShowMore = () => {
+    fetchMore({
+      variables: {
+        limit: gameLenght,
+        start: data.games.data.length
+      }
+    }).then(() => {
+      setGameLenght((prevLimit) =>
+        prevLimit <= data.games.data.length ? prevLimit + 15 : 15
+      )
+    })
+  }
 
   return (
     <Base>
@@ -65,7 +79,7 @@ function GamesTemplate({
             </S.GameContainer>
 
             {data && data.games.data.length > 0 && (
-              <S.Showmore role="button" onClick={() => {}}>
+              <S.Showmore role="button" onClick={handleShowMore}>
                 <p>Show more</p>
                 <ChevronRight
                   style={{ rotate: "90deg", color: "#F231A5" }}
