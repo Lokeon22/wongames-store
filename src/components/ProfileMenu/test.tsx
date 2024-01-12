@@ -1,12 +1,11 @@
-import { screen } from "@testing-library/react"
-import { renderWithTheme } from "../../utils/tests/helpers"
+import { render, screen } from "../../utils/test-utils"
 import "jest-styled-components"
 
 import ProfileMenu from "."
 
 describe("<ProfileMenu />", () => {
   it("should render the nav menu", () => {
-    const { container } = renderWithTheme(<ProfileMenu />)
+    const { container } = render(<ProfileMenu />)
 
     expect(
       screen.getByRole("link", { name: /my profile/i })

@@ -1,12 +1,11 @@
-import { screen, waitFor } from "@testing-library/react"
-import { renderWithTheme } from "../../utils/tests/helpers"
+import { render, screen, waitFor } from "../../utils/test-utils"
 
 import userEvent from "@testing-library/user-event"
 import Checkbox from "."
 
 describe("<Checkbox />", () => {
   it("should render with label", () => {
-    const { container } = renderWithTheme(
+    const { container } = render(
       <Checkbox label="checkbox label" labelFor="check" />
     )
 
@@ -18,13 +17,13 @@ describe("<Checkbox />", () => {
   })
 
   it("should render without label", () => {
-    renderWithTheme(<Checkbox />)
+    render(<Checkbox />)
 
     expect(screen.queryByLabelText("checkbox")).not.toBeInTheDocument()
   })
 
   it("should render with black label", () => {
-    renderWithTheme(
+    render(
       <Checkbox label="checkbox label" labelFor="check" labelColor="black" />
     )
 
@@ -36,7 +35,7 @@ describe("<Checkbox />", () => {
   it("should dispatch onCheck when label change", async () => {
     const onCheck = jest.fn()
 
-    renderWithTheme(<Checkbox label="check box" onCheck={onCheck} isChecked />)
+    render(<Checkbox label="check box" onCheck={onCheck} isChecked />)
 
     userEvent.click(screen.getByRole("checkbox"))
     await waitFor(() => expect(onCheck).toHaveBeenCalledTimes(1))

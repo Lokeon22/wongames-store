@@ -1,6 +1,5 @@
 import "../../../.jest/match-media-mock"
-import { screen } from "@testing-library/react"
-import { renderWithTheme } from "../../utils/tests/helpers"
+import { render, screen } from "../../utils/test-utils"
 
 import Showcase from "."
 import gamesMock from "../GameCardSlider/mock"
@@ -13,9 +12,7 @@ const props = highlightMock
 
 describe("<Showcase />", () => {
   it("should render showcase with all components", () => {
-    renderWithTheme(
-      <Showcase headtitle="Hello" highlights={props} gamecards={items} />
-    )
+    render(<Showcase headtitle="Hello" highlights={props} gamecards={items} />)
 
     expect(screen.getByRole("heading", { name: /hello/i })).toBeInTheDocument()
     expect(
@@ -34,7 +31,7 @@ describe("<Showcase />", () => {
   })
 
   it("should render showcase without highlight", () => {
-    renderWithTheme(<Showcase headtitle="Hello" gamecards={items} />)
+    render(<Showcase headtitle="Hello" gamecards={items} />)
 
     expect(
       screen.queryByRole("heading", { name: /heading 1/i })
@@ -45,7 +42,7 @@ describe("<Showcase />", () => {
   })
 
   it("should render showcase without gamecards", () => {
-    renderWithTheme(<Showcase headtitle="Hello" highlights={props} />)
+    render(<Showcase headtitle="Hello" highlights={props} />)
 
     expect(
       screen.queryByRole("heading", { name: /red dead redemption/i })

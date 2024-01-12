@@ -1,12 +1,11 @@
-import { screen } from "@testing-library/react"
-import { renderWithTheme } from "../../utils/tests/helpers"
+import { render, screen } from "../../utils/test-utils"
 
 import GameInfo from "."
 import items from "./mock"
 
 describe("<GameInfo />", () => {
   it("should render the heading", () => {
-    const { container } = renderWithTheme(<GameInfo {...items} />)
+    const { container } = render(<GameInfo {...items} />)
 
     expect(
       screen.getByRole("heading", { name: `${items.title}` })
@@ -20,7 +19,7 @@ describe("<GameInfo />", () => {
   })
 
   it("should render the buttons", () => {
-    renderWithTheme(<GameInfo {...items} />)
+    render(<GameInfo {...items} />)
 
     expect(
       screen.getByRole("button", { name: /add to cart/i })

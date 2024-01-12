@@ -1,6 +1,5 @@
 import userEvent from "@testing-library/user-event"
-import { screen, waitFor } from "@testing-library/react"
-import { renderWithTheme } from "../../utils/tests/helpers"
+import { render, screen, waitFor } from "../../utils/test-utils"
 
 import Dropdown from "."
 
@@ -8,7 +7,7 @@ describe("<Dropdown />", () => {
   beforeEach(() => {
     const title = <h1 aria-label="toogle dropdown">Click here</h1>
 
-    renderWithTheme(
+    render(
       <Dropdown title={title}>
         <span>content</span>
       </Dropdown>

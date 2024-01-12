@@ -1,11 +1,10 @@
-import { screen } from "@testing-library/react"
-import { renderWithTheme } from "../../utils/tests/helpers"
+import { render, screen } from "../../utils/test-utils"
 
 import { Profile } from "."
 
 describe("<Profile />", () => {
   it("should render the heading", () => {
-    renderWithTheme(
+    render(
       <Profile>
         <h2>teste</h2>
       </Profile>

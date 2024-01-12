@@ -1,6 +1,5 @@
 import "../../../.jest/match-media-mock"
-import { screen } from "@testing-library/react"
-import { renderWithTheme } from "../../utils/tests/helpers"
+import { render, screen } from "../../utils/test-utils"
 import { Home } from "./index"
 
 import bannersMock from "../../components/BannerSlider/mock"
@@ -42,7 +41,7 @@ jest.mock("components/BannerSlider", () => {
 
 describe("<Home />", () => {
   it("should render banner and showcases", () => {
-    renderWithTheme(<Home {...data} />)
+    render(<Home {...data} />)
 
     expect(screen.getByTestId("Mock BannerSlider")).toBeInTheDocument()
     expect(screen.getAllByTestId("Mock Showcase")).toHaveLength(4)

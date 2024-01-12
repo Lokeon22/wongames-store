@@ -1,12 +1,11 @@
-import { screen, waitFor } from "@testing-library/react"
-import { renderWithTheme } from "../../utils/tests/helpers"
+import { render, screen, waitFor } from "../../utils/test-utils"
 
 import Radio from "."
 import userEvent from "@testing-library/user-event"
 
 describe("<Radio />", () => {
   it("should render with black label", () => {
-    const { container } = renderWithTheme(
+    const { container } = render(
       <Radio label="radio" labelFor="radio" labelColors="black" />
     )
 
@@ -19,7 +18,7 @@ describe("<Radio />", () => {
   })
 
   it("should render with label white", () => {
-    renderWithTheme(<Radio label="radio" labelColors="white" />)
+    render(<Radio label="radio" labelColors="white" />)
 
     expect(screen.getByText("radio")).toHaveStyle({
       color: "#FAFAFA"
@@ -27,14 +26,14 @@ describe("<Radio />", () => {
   })
 
   it("should be render without label", () => {
-    renderWithTheme(<Radio />)
+    render(<Radio />)
 
     expect(screen.queryByLabelText(/radio/i)).not.toBeInTheDocument()
   })
 
   it("should dispatch onCheck when label status changes", async () => {
     const onCheck = jest.fn()
-    renderWithTheme(
+    render(
       <Radio
         label="radio"
         labelFor="radio"

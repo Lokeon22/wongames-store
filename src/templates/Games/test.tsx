@@ -1,5 +1,4 @@
-import { screen } from "@testing-library/react"
-import { renderWithTheme } from "../../utils/tests/helpers"
+import { render, screen } from "../../utils/test-utils"
 import { MockedProvider } from "@apollo/client/testing"
 
 jest.mock("templates/Base", () => ({
@@ -18,7 +17,7 @@ jest.mock("components/ExploreSidebar", () => ({
 
 describe("<Games />", () => {
   it("should render the heading", () => {
-    renderWithTheme(
+    render(
       <MockedProvider mocks={[]} addTypename={false}>
         <span>Mock Base</span>
       </MockedProvider>

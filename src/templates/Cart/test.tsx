@@ -1,5 +1,4 @@
-import { screen } from "@testing-library/react"
-import { renderWithTheme } from "../../utils/tests/helpers"
+import { render, screen } from "../../utils/test-utils"
 
 import gamesMock from "../../components/GameCard/mock"
 import highlightsMock from "../../components/Highlight/mock"
@@ -54,7 +53,7 @@ jest.mock("components/Empty", () => ({
 
 describe("<Cart />", () => {
   it("should render the heading", () => {
-    renderWithTheme(<Cart {...props} />)
+    render(<Cart {...props} />)
 
     expect(screen.getByTestId("Mock Base")).toBeInTheDocument()
     expect(screen.getByTestId("Mock Showcase")).toBeInTheDocument()
@@ -63,7 +62,7 @@ describe("<Cart />", () => {
   })
 
   it("should render empty section", () => {
-    renderWithTheme(<Cart {...props} items={[]} />)
+    render(<Cart {...props} items={[]} />)
 
     expect(screen.getByTestId("Mock Empty")).toBeInTheDocument()
   })

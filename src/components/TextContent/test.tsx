@@ -1,13 +1,11 @@
-import { screen } from "@testing-library/react"
-
-import { renderWithTheme } from "../../utils/tests/helpers"
+import { render, screen } from "../../utils/test-utils"
 
 import TextContent from "."
 import textMock from "./mock"
 
 describe("<TextContent />", () => {
   it("should render the TextContent", () => {
-    renderWithTheme(<TextContent {...textMock} />)
+    render(<TextContent {...textMock} />)
 
     expect(
       screen.getByRole("heading", { name: /description/i })
@@ -22,7 +20,7 @@ describe("<TextContent />", () => {
   })
 
   it("should render the content color", () => {
-    renderWithTheme(<TextContent {...textMock} />)
+    render(<TextContent {...textMock} />)
 
     const wrapper = screen.getByRole("heading", {
       name: /description/i

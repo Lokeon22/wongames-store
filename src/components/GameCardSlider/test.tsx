@@ -1,5 +1,5 @@
 import "../../../.jest/match-media-mock"
-import { renderWithTheme } from "../../utils/tests/helpers"
+import { render } from "../../utils/test-utils"
 
 import { GameCardProps } from "../GameCard"
 import GameCardSlider from "."
@@ -41,7 +41,7 @@ const items: GameCardProps[] = [
 
 describe("<GameCardSlider />", () => {
   it("should render the gameCard and slide", () => {
-    const { container } = renderWithTheme(<GameCardSlider items={items} />)
+    const { container } = render(<GameCardSlider items={items} />)
 
     expect(container.querySelectorAll(".slick-active")).toHaveLength(4)
   })

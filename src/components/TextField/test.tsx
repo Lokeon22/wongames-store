@@ -1,5 +1,4 @@
-import { screen, waitFor } from "@testing-library/react"
-import { renderWithTheme } from "../../utils/tests/helpers"
+import { render, screen, waitFor } from "../../utils/test-utils"
 import { Email } from "@styled-icons/material-outlined"
 
 import TextField from "."
@@ -7,31 +6,31 @@ import userEvent from "@testing-library/user-event"
 
 describe("<TextField />", () => {
   it("should render the label", () => {
-    renderWithTheme(<TextField label="email" labelFor="email" id="email" />)
+    render(<TextField label="email" labelFor="email" id="email" />)
 
     expect(screen.getByLabelText("email")).toBeInTheDocument()
   })
 
   it("should render without label", () => {
-    renderWithTheme(<TextField />)
+    render(<TextField />)
 
     expect(screen.queryByLabelText("email")).not.toBeInTheDocument()
   })
 
   it("should render the input", () => {
-    renderWithTheme(<TextField label="email" labelFor="email" id="email" />)
+    render(<TextField label="email" labelFor="email" id="email" />)
 
     expect(screen.getByLabelText(/email/i)).toHaveAttribute("type", "text")
   })
 
   it("should render the placeholder", () => {
-    renderWithTheme(<TextField placeholder="hello world" />)
+    render(<TextField placeholder="hello world" />)
 
     expect(screen.getByPlaceholderText(/hello world/i)).toBeInTheDocument()
   })
 
   it("should render the white label by default", () => {
-    renderWithTheme(<TextField label="email" labelFor="email" id="email" />)
+    render(<TextField label="email" labelFor="email" id="email" />)
 
     expect(screen.getByText(/email/i)).toHaveStyle({
       color: "#FAFAFA"
@@ -39,7 +38,7 @@ describe("<TextField />", () => {
   })
 
   it("should render the black label when passed", () => {
-    renderWithTheme(
+    render(
       <TextField
         label="email"
         labelFor="email"
@@ -56,7 +55,7 @@ describe("<TextField />", () => {
   it("should dispatch onChange when input change", async () => {
     const onChange = jest.fn()
 
-    renderWithTheme(
+    render(
       <TextField
         id="email"
         label="email"
@@ -76,13 +75,13 @@ describe("<TextField />", () => {
   })
 
   it("should render with icon", () => {
-    renderWithTheme(<TextField icon={<Email data-testid="icon" />} />)
+    render(<TextField icon={<Email data-testid="icon" />} />)
 
     expect(screen.getByTestId(/icon/i)).toBeInTheDocument()
   })
 
   it("should render on the right size", () => {
-    renderWithTheme(
+    render(
       <TextField iconPosition="right" icon={<Email data-testid="icon" />} />
     )
 
@@ -90,19 +89,19 @@ describe("<TextField />", () => {
   })
 
   it("should render on the left size by default", () => {
-    renderWithTheme(<TextField icon={<Email data-testid="icon" />} />)
+    render(<TextField icon={<Email data-testid="icon" />} />)
 
     expect(screen.getByTestId(/icon/i)).toHaveStyle({ right: "0.6rem" })
   })
 
   it("should render the disabled input", () => {
-    renderWithTheme(<TextField disabled label="hello" />)
+    render(<TextField disabled label="hello" />)
 
     expect(screen.getByRole("textbox")).toBeDisabled()
   })
 
   it("should return error on input", () => {
-    const { container } = renderWithTheme(
+    const { container } = render(
       <TextField
         icon={<Email data-test="icon" />}
         error="error"
