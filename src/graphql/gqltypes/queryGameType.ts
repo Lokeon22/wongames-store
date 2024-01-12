@@ -13,6 +13,7 @@ type Cover = {
 }
 
 export type GameAttributes = {
+  id: string
   attributes: {
     name: string
     slug: string

@@ -3,7 +3,7 @@ import { QUERY_HOME_BANNERS } from "../graphql/queries/home"
 import { HomeDataProps } from "../graphql/gqltypes/queryHomeBannersType"
 
 import { Home as HomeContent } from "../templates/Home"
-import { bannerMapper, gamesMapper, highlightsMapper } from "@/utils/mappers"
+import { bannerMapper, gamesMapper, highlightsMapper } from "../utils/mappers"
 
 const apolloClient = initializeApollo()
 

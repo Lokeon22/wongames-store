@@ -4,6 +4,7 @@ import { PropsWithChildren } from "react"
 
 import { GlobalStyles } from "@/styles/global"
 import { ThemeProvider } from "styled-components"
+import { CartProvider } from "../hooks/use-cart"
 
 import theme from "@/styles/theme"
 import { useApollo } from "../utils/apolo"
@@ -15,8 +16,10 @@ export function Providers({ children }: PropsWithChildren) {
     <>
       <ApolloProvider client={client}>
         <ThemeProvider theme={theme}>
-          <GlobalStyles />
-          {children}
+          <CartProvider>
+            <GlobalStyles />
+            {children}
+          </CartProvider>
         </ThemeProvider>
       </ApolloProvider>
     </>

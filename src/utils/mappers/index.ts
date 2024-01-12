@@ -1,6 +1,8 @@
-import { BannersAttributes } from "../graphql/gqltypes/queryHomeBannersType"
-import { GameAttributes } from "../graphql/gqltypes/queryGameType"
-import { HighlightProps } from "../graphql/gqltypes/queryHighlightType"
+import { BannersAttributes } from "../../graphql/gqltypes/queryHomeBannersType"
+import { GameAttributes } from "../../graphql/gqltypes/queryGameType"
+import { HighlightProps } from "../../graphql/gqltypes/queryHighlightType"
+
+import { formatPrice } from "../formatprice"
 
 export const bannerMapper = (banners: BannersAttributes[]) => {
   return banners.map(({ attributes }) => ({
@@ -35,4 +37,16 @@ export const highlightsMapper = (highlight: HighlightProps) => {
     buttonLink: highlight.buttonLink,
     alignment: highlight.alignment
   }
+}
+
+export const cartMapper = (cart: GameAttributes[] | undefined) => {
+  return cart
+    ? cart.map(({ id, attributes }) => ({
+        id,
+        slug: attributes.slug,
+        title: attributes.name,
+        price: formatPrice(attributes.price),
+        img: `http://localhost:1337/${attributes.cover.data.attributes.url}`
+      }))
+    : []
 }

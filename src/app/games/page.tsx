@@ -5,7 +5,7 @@ const filterPrice = {
   name: "where_price",
   type: "radio",
   fields: [
-    { label: "Free", name: 0 },
+    { label: "Under $2", name: 2 },
     { label: "Under $10", name: 10 },
     { label: "Under $20", name: 20 },
     { label: "Under $25", name: 25 },

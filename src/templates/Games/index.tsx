@@ -31,14 +31,15 @@ function GamesTemplate({ filterItems }: GamesTemplateProps) {
   })
 
   const onFilter = (values: Values) => {
-    fetchMore({
-      variables: {
-        where_price: values.where_price,
-        sort: values.sort ? values.sort : "price:asc"
-      }
-    })
-
-    return
+    if (values.where_price || values.sort) {
+      fetchMore({
+        variables: {
+          where_price: values?.where_price ? values?.where_price : 99,
+          sort: values.sort ? values.sort : "price:asc"
+        }
+      })
+      return
+    }
   }
 
   const handleShowMore = () => {

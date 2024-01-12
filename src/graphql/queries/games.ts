@@ -8,6 +8,7 @@ export const QUERY_GAMES = gql`
   query QueryGames($limit: Int!, $start: Int) {
     games(pagination: { limit: $limit, start: $start }) {
       data {
+        id
         attributes {
           ...GameFragment
         }
@@ -21,6 +22,7 @@ export const QUERY_GAME_BY_SLUG = gql`
   query GameBySlug($slug: String!) {
     games(filters: { slug: { eq: $slug } }) {
       data {
+        id
         attributes {
           name
           short_description
@@ -96,6 +98,43 @@ export const QUERY_GAMES_FILTERED = gql`
       sort: $sort
     ) {
       data {
+        id
+        attributes {
+          ...GameFragment
+        }
+      }
+    }
+  }
+  ${GameFragment}
+`
+
+/*export const QUERY_ALL_GAMES_BY_SLUG = gql`
+  query getGamesBySlug($slugs: [String!]!) {
+    games(filters: { and: [{ slug: { in: $slugs } }] }) {
+      data {
+        id
+        attributes {
+          name
+          price
+          cover {
+            data {
+              attributes {
+                ...GameFragment
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  ${GameFragment}
+`*/
+
+export const QUERY_GAMES_BY_ID = gql`
+  query getGames($ids: [ID!]!) {
+    games(filters: { and: [{ id: { in: $ids } }] }) {
+      data {
+        id
         attributes {
           ...GameFragment
         }

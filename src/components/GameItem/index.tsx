@@ -9,6 +9,7 @@ export type PaymentProps = {
 }
 
 export type GameItemProps = {
+  slug?: string
   img: string
   title: string
   price: string

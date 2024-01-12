@@ -42,6 +42,7 @@ type Gallery = {
 }
 
 type GameAttributes = {
+  id: string
   attributes: {
     slug: string
     name: string

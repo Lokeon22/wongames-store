@@ -19,6 +19,7 @@ export const QUERY_HOME_BANNERS = gql`
       pagination: { limit: 8 }
     ) {
       data {
+        id
         attributes {
           ...GameFragment
         }
@@ -31,6 +32,7 @@ export const QUERY_HOME_BANNERS = gql`
       pagination: { limit: 8 }
     ) {
       data {
+        id
         attributes {
           ...GameFragment
         }
@@ -42,6 +44,7 @@ export const QUERY_HOME_BANNERS = gql`
       pagination: { limit: 8 }
     ) {
       data {
+        id
         attributes {
           ...GameFragment
         }
