@@ -2,14 +2,11 @@ import styled, { css } from "styled-components"
 
 import * as ButtonStyles from "../Button/styles"
 
-export const Wrapper = styled.main`
-  ${({ theme }) => css`
-    background-color: ${theme.colors.white};
-  `}
-`
+export const Wrapper = styled.main``
 
 export const Body = styled.div`
   ${({ theme }) => css`
+    background-color: ${theme.colors.white};
     padding: ${theme.spacings.xsmall} ${theme.spacings.small};
   `}
 `
@@ -46,7 +43,6 @@ export const Footer = styled.div`
     justify-content: space-between;
 
     background-color: ${theme.colors.lightGray};
-    margin-top: ${theme.spacings.medium};
     padding: ${theme.spacings.small};
 
     ${ButtonStyles.Wrapper} {

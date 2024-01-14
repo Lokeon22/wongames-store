@@ -60,3 +60,23 @@ export const Total = styled.span`
     color: ${theme.colors.primary};
   `}
 `
+
+export const Loading = styled.div`
+  ${({ theme }) => css`
+    background: ${theme.colors.white};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40rem;
+    min-width: 56rem;
+    svg {
+      width: 10rem;
+      height: 10rem;
+    }
+  `}
+`
+
+export const GameList = styled.div`
+  max-height: 40rem;
+  overflow-y: auto;
+`

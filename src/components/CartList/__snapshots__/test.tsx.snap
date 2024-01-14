@@ -1,36 +1,38 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<CartList /> should render the cartList 1`] = `
-.c1 {
+.c2 {
   padding: 2.4rem;
   border-bottom: 0.1rem solid #EAEAEA;
   background-color: #FAFAFA;
 }
 
-.c2 {
+.c3 {
+  width: 100%;
   display: flex;
 }
 
-.c3 {
+.c4 {
   flex-shrink: 0;
   margin-right: 1.2rem;
   width: 9.6rem;
   height: 5.6rem;
 }
 
-.c4 {
+.c5 {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.c5 {
+.c6 {
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: start;
 }
 
-.c6 {
+.c7 {
   font-size: 1.4rem;
   line-height: 1.4rem;
   font-weight: 600;
@@ -38,13 +40,20 @@ exports[`<CartList /> should render the cartList 1`] = `
   margin-bottom: 0.8rem;
 }
 
-.c7 {
+.c9 {
   width: fit-content;
   color: #FAFAFA;
   padding: 0.2rem 0.8rem;
   font-size: 1.4rem;
   background-color: #3CD3C1;
   border-radius: 0.2rem;
+}
+
+.c8 {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .c0 {
@@ -54,7 +63,7 @@ exports[`<CartList /> should render the cartList 1`] = `
   align-self: start;
 }
 
-.c8 {
+.c10 {
   background: #eee;
   color: #030517;
   font-weight: 600;
@@ -65,25 +74,30 @@ exports[`<CartList /> should render the cartList 1`] = `
   justify-content: space-between;
 }
 
-.c9 {
+.c11 {
   color: #F231A5;
 }
 
+.c1 {
+  max-height: 40rem;
+  overflow-y: auto;
+}
+
 @media (max-width: 1170px) {
-  .c1 {
+  .c2 {
     padding: 0.8rem;
   }
 }
 
 @media (min-width: 768px) {
-  .c1 {
+  .c2 {
     display: flex;
     gap: 1rem;
   }
 }
 
 @media (min-width: 768px) {
-  .c3 {
+  .c4 {
     width: 15rem;
     height: 7rem;
     margin-right: 1.6rem;
@@ -91,14 +105,14 @@ exports[`<CartList /> should render the cartList 1`] = `
 }
 
 @media (min-width: 768px) {
-  .c6 {
+  .c7 {
     font-size: 2.0rem;
     line-height: 2.0rem;
   }
 }
 
 @media (min-width: 768px) {
-  .c8 {
+  .c10 {
     font-size: 1.6rem;
     padding: 2.4rem;
   }
@@ -116,67 +130,79 @@ exports[`<CartList /> should render the cartList 1`] = `
       <div
         class="c3"
       >
-        <img
-          alt="Red Dead Redemption 2"
+        <div
           class="c4"
-          src="https://source.unsplash.com/user/willianjusten/151x70"
-        />
-      </div>
-      <div
-        class="c5"
-      >
-        <h3
+        >
+          <img
+            alt="Red Dead Redemption 2"
+            class="c5"
+            src="https://source.unsplash.com/user/willianjusten/151x70"
+          />
+        </div>
+        <div
           class="c6"
         >
-          Red Dead Redemption 2
-        </h3>
-        <p
-          class="c7"
-        >
-          $R$ 215,00
-        </p>
+          <h3
+            class="c7"
+          >
+            Red Dead Redemption 2
+          </h3>
+          <div
+            class="c8"
+          >
+            <p
+              class="c9"
+            >
+              R$ 215,00
+            </p>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-  <div
-    class="c1"
-  >
     <div
       class="c2"
     >
       <div
         class="c3"
       >
-        <img
-          alt="Borderlands 3"
+        <div
           class="c4"
-          src="https://source.unsplash.com/user/willianjusten/151x70"
-        />
-      </div>
-      <div
-        class="c5"
-      >
-        <h3
+        >
+          <img
+            alt="Borderlands 3"
+            class="c5"
+            src="https://source.unsplash.com/user/willianjusten/151x70"
+          />
+        </div>
+        <div
           class="c6"
         >
-          Borderlands 3
-        </h3>
-        <p
-          class="c7"
-        >
-          $R$ 215,00
-        </p>
+          <h3
+            class="c7"
+          >
+            Borderlands 3
+          </h3>
+          <div
+            class="c8"
+          >
+            <p
+              class="c9"
+            >
+              R$ 215,00
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
   <div
-    class="c8"
+    class="c10"
   >
     <span>
       Total:
     </span>
     <span
-      class="c9"
+      class="c11"
     >
       R$ 330,00
     </span>

@@ -1,8 +1,10 @@
-import { render, screen } from "../../utils/test-utils"
+import { render, screen, fireEvent } from "../../utils/test-utils"
+import { CartContextDefaultValues } from "../../hooks/use-cart"
 
 import GameItem from "."
 
 const props = {
+  id: "1",
   img: "red-dead-img.png",
   title: "Red dead",
   price: "215,00"
@@ -30,6 +32,22 @@ describe("<GameItem />", () => {
     expect(
       screen.getByRole("link", { name: `Get ${props.title}` })
     ).toHaveAttribute("href", downloadLink)
+  })
+
+  it("should render remove if the item is inside the cart", () => {
+    const cartProviderProps = {
+      ...CartContextDefaultValues,
+      isInCart: () => true,
+      removeFromCart: jest.fn()
+    }
+
+    render(<GameItem {...props} />, { cartProviderProps })
+
+    const removeLink = screen.getByText(/remove/i)
+    expect(removeLink).toBeInTheDocument()
+
+    fireEvent.click(removeLink)
+    expect(cartProviderProps.removeFromCart).toHaveBeenCalledWith("1")
   })
 
   it("should render the paymentInfo", () => {

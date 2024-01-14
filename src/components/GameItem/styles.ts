@@ -19,6 +19,7 @@ export const Wrapper = styled.div`
 `
 
 export const GameContent = styled.div`
+  width: 100%;
   display: flex;
 `
 
@@ -44,6 +45,7 @@ export const Image = styled.img`
 `
 
 export const Content = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: start;
@@ -112,6 +114,21 @@ export const CardInfo = styled.div`
     ${media.lessThan("medium")`
       margin-top: ${theme.spacings.xsmall}
     `}
+  `}
+`
+
+export const Group = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`
+
+export const Remove = styled.div`
+  ${({ theme }) => css`
+    cursor: pointer;
+    color: ${theme.colors.primary};
+    font-size: ${theme.font.sizes.small};
   `}
 `
 

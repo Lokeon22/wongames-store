@@ -42,7 +42,7 @@ describe("<ExploreSidebar />", () => {
       <ExploreSidebar
         items={items}
         onFilter={jest.fn}
-        initialValues={{ windows: true, sort_by: "low-to-high" }}
+        initialValues={{ windows: "windows", sort_by: "low-to-high" }}
       />
     )
 
@@ -58,7 +58,7 @@ describe("<ExploreSidebar />", () => {
       <ExploreSidebar
         items={items}
         onFilter={onFilter}
-        initialValues={{ windows: true, sort_by: "low-to-high" }}
+        initialValues={{ windows: "windows", sort_by: "low-to-high" }}
       />
     )
 
@@ -66,7 +66,7 @@ describe("<ExploreSidebar />", () => {
 
     await waitFor(() => {
       expect(onFilter).toHaveBeenCalledWith({
-        windows: true,
+        windows: "windows",
         sort_by: "low-to-high"
       })
     })
@@ -84,7 +84,7 @@ describe("<ExploreSidebar />", () => {
 
     await waitFor(() => {
       expect(onFilter).toHaveBeenCalledWith({
-        windows: true,
+        windows: "windows",
         sort_by: "low-to-high"
       })
     })
