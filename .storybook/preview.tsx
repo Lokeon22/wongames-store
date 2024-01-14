@@ -1,6 +1,6 @@
 import React from "react"
 import { GlobalStyles } from "../src/styles/global"
-
+import { CartContext, CartContextDefaultValues } from "../src/hooks/use-cart"
 import { ThemeProvider } from "styled-components"
 import theme from "../src/styles/theme"
 
@@ -21,11 +21,19 @@ export const parameters = {
 }
 
 export const decorators = [
-  (Story) => (
+  (Story, context) => (
     <>
       <ThemeProvider theme={theme}>
-        <GlobalStyles />
-        <Story />
+        <CartContext.Provider
+          value={{
+            ...CartContextDefaultValues,
+            ...(context?.args?.cartContextValue || {}),
+            ...context.args
+          }}
+        >
+          <GlobalStyles />
+          <Story />
+        </CartContext.Provider>
       </ThemeProvider>
     </>
   )

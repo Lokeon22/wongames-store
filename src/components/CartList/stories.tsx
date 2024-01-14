@@ -1,14 +1,15 @@
 import { StoryFn, Meta } from "@storybook/react"
-import CartList, { CartListProps } from "."
+import CartList from "."
 
 import items from "./mock"
 
 export default {
   title: "CartList",
   component: CartList,
-  args: {
-    items,
-    total: "R$ 330,00"
+  argTypes: {
+    carContextValue: {
+      type: "string"
+    }
   },
   parameters: {
     backgrounds: {
@@ -17,19 +18,29 @@ export default {
   }
 } as Meta
 
-export const Default: StoryFn<CartListProps> = (args) => (
+export const Default: StoryFn = (args) => (
   <div style={{ maxWidth: "80rem" }}>
     <CartList {...args} />
   </div>
 )
 
-export const WithButton: StoryFn<CartListProps> = (args) => (
+Default.args = {
+  total: "R$ 330,00",
+  cartContextValue: { items }
+}
+
+export const WithButton: StoryFn = (args) => (
   <div style={{ maxWidth: "80rem" }}>
     <CartList {...args} hasButton />
   </div>
 )
 
-export const Empty: StoryFn<CartListProps> = () => (
+WithButton.args = {
+  total: "R$ 330,00",
+  cartContextValue: { items }
+}
+
+export const Empty: StoryFn = () => (
   <div style={{ maxWidth: "80rem" }}>
     <CartList />
   </div>

@@ -68,10 +68,11 @@ function GamesTemplate({ filterItems }: GamesTemplateProps) {
           <section>
             <S.GameContainer>
               {data && data.games.data.length > 0 ? (
-                data.games.data.map(({ attributes }) => {
+                data.games.data.map(({ attributes, id }) => {
                   return (
                     <GameCard
                       key={attributes.slug}
+                      id={id}
                       slug={attributes.slug}
                       title={attributes.name}
                       image={`http://localhost:1337${attributes.cover.data.attributes.url}`}

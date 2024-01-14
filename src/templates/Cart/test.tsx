@@ -2,7 +2,6 @@ import { render, screen } from "../../utils/test-utils"
 
 import gamesMock from "../../components/GameCard/mock"
 import highlightsMock from "../../components/Highlight/mock"
-import items from "../../components/CartList/mock"
 import cards from "../../components/PaymentOptions/mock"
 
 import { Cart } from "."
@@ -11,8 +10,6 @@ const props = {
   games: gamesMock,
   highlights: highlightsMock,
   recommendedTitle: "Game",
-  items,
-  total: "R$ 350,00",
   cards
 }
 
@@ -59,11 +56,5 @@ describe("<Cart />", () => {
     expect(screen.getByTestId("Mock Showcase")).toBeInTheDocument()
     expect(screen.getByTestId("Mock CartList")).toBeInTheDocument()
     expect(screen.getByTestId("Mock PaymentOptions")).toBeInTheDocument()
-  })
-
-  it("should render empty section", () => {
-    render(<Cart {...props} items={[]} />)
-
-    expect(screen.getByTestId("Mock Empty")).toBeInTheDocument()
   })
 })

@@ -69,6 +69,7 @@ async function generateStaticParams({ params }: ParamsProps) {
   return {
     cover: `http://localhost:1337${game.cover.data.attributes.url}`,
     gameInfo: {
+      id: data[0].id,
       title: game.name,
       price: game.price,
       description: game.short_description

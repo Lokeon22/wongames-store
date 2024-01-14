@@ -7,7 +7,6 @@ import { Divider } from "../../components/Divider"
 
 import Heading from "../../components/Heading"
 import Showcase from "../../components/Showcase"
-import Empty from "../../components/Empty"
 
 import CartList, { CartListProps } from "../../components/CartList"
 import PaymentOptions, {
@@ -27,8 +26,6 @@ export function Cart({
   games,
   recommendedTitle,
   highlights,
-  items,
-  total,
   cards
 }: CartProps) {
   const handlePayment = () => ({})
@@ -42,18 +39,8 @@ export function Cart({
           </Heading>
 
           <S.Content>
-            {items && items.length > 0 ? (
-              <>
-                <CartList items={items} total={total} />
-                <PaymentOptions cards={cards} handlePayment={handlePayment} />
-              </>
-            ) : (
-              <Empty
-                title="Nothing to see here"
-                description="Go back to the store and explore great games and offers"
-                hasLink
-              />
-            )}
+            <CartList />
+            <PaymentOptions cards={cards} handlePayment={handlePayment} />
           </S.Content>
 
           <Divider />

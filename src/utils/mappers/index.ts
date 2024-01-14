@@ -18,7 +18,8 @@ export const bannerMapper = (banners: BannersAttributes[]) => {
 }
 
 export const gamesMapper = (games: GameAttributes[]) => {
-  return games.map(({ attributes }) => ({
+  return games.map(({ attributes, id }) => ({
+    id,
     slug: attributes.slug,
     image: `http://localhost:1337${attributes.cover.data.attributes.url}`,
     title: attributes.name,
@@ -46,7 +47,7 @@ export const cartMapper = (cart: GameAttributes[] | undefined) => {
         slug: attributes.slug,
         title: attributes.name,
         price: formatPrice(attributes.price),
-        img: `http://localhost:1337/${attributes.cover.data.attributes.url}`
+        img: `http://localhost:1337${attributes.cover.data.attributes.url}`
       }))
     : []
 }

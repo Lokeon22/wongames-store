@@ -3,6 +3,7 @@ import { render, screen, fireEvent } from "../../utils/test-utils"
 import GameCard from "."
 
 const props = {
+  id: "1",
   slug: "read-dead-2",
   image: "/img/red-dead.png",
   title: "Read dead",

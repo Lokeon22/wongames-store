@@ -6,6 +6,7 @@ import GameCardSlider from "."
 
 const items: GameCardProps[] = [
   {
+    id: "1",
     slug: "red dead",
     image: "https://source.unsplash.com/user/willianjusten/300x142",
     title: "Red Dead Redemption",
@@ -14,6 +15,7 @@ const items: GameCardProps[] = [
     promotionalPrice: 215
   },
   {
+    id: "2",
     slug: "red dead 2",
     image: "https://source.unsplash.com/user/willianjusten/300x143",
     title: "Red Dead Redemption 2",
@@ -22,6 +24,7 @@ const items: GameCardProps[] = [
     promotionalPrice: 215
   },
   {
+    id: "3",
     slug: "red dead 3",
     image: "https://source.unsplash.com/user/willianjusten/300x144",
     title: "Red Dead Redemption 3",
@@ -30,6 +33,7 @@ const items: GameCardProps[] = [
     promotionalPrice: 215
   },
   {
+    id: "4",
     slug: "red dead 4",
     image: "https://source.unsplash.com/user/willianjusten/300x145",
     title: "Red Dead Redemption 4",

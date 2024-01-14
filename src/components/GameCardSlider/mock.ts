@@ -2,6 +2,7 @@ import { GameCardProps } from "../GameCard"
 
 const items: GameCardProps[] = [
   {
+    id: "1",
     slug: "red dead",
     image: "https://source.unsplash.com/user/willianjusten/300x142",
     title: "Red Dead Redemption",
@@ -10,6 +11,7 @@ const items: GameCardProps[] = [
     promotionalPrice: 215
   },
   {
+    id: "2",
     slug: "red dead 2",
     image: "https://source.unsplash.com/user/willianjusten/300x143",
     title: "Red Dead Redemption 2",
@@ -18,6 +20,7 @@ const items: GameCardProps[] = [
     promotionalPrice: 215
   },
   {
+    id: "3",
     slug: "red dead 3",
     image: "https://source.unsplash.com/user/willianjusten/300x144",
     title: "Red Dead Redemption 3",
@@ -26,6 +29,7 @@ const items: GameCardProps[] = [
     promotionalPrice: 215
   },
   {
+    id: "4",
     slug: "red dead 4",
     image: "https://source.unsplash.com/user/willianjusten/300x145",
     title: "Red Dead Redemption 4",
@@ -34,6 +38,7 @@ const items: GameCardProps[] = [
     promotionalPrice: 215
   },
   {
+    id: "5",
     slug: "red dead 5",
     image: "https://source.unsplash.com/user/willianjusten/300x146",
     title: "Red Dead Redemption 5",
@@ -42,6 +47,7 @@ const items: GameCardProps[] = [
     promotionalPrice: 215
   },
   {
+    id: "6",
     slug: "red dead 6",
     image: "https://source.unsplash.com/user/willianjusten/300x147",
     title: "Red Dead Redemption 6",
