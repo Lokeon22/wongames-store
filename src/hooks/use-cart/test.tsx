@@ -3,7 +3,7 @@ import { MockedProvider } from "@apollo/client/testing"
 import { CartProvider, useCart, CartProviderProps } from "."
 import { setStorageItem } from "../../utils/localStorage"*/
 
-import { cartItems, gamesMock } from "./mock"
+//import { cartItems, gamesMock } from "./mock"
 
 describe("useCart", () => {
   it("should return items and infos if there any in the cart", async () => {

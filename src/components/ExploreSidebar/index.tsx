@@ -71,7 +71,7 @@ const ExploreSidebar = ({
                   label={field.label}
                   labelFor={field.name}
                   isChecked={!!values[field.name]}
-                  onCheck={(v) => handleChange(field.name, v)}
+                  onCheck={(v) => handleChange(field.name, v ? field.name : "")}
                 />
               ))}
 

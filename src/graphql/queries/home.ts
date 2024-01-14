@@ -68,6 +68,7 @@ export const QUERY_HOME_BANNERS = gql`
             }
             games {
               data {
+                id
                 attributes {
                   ...GameFragment
                 }

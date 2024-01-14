@@ -85,7 +85,7 @@ export const QUERY_GAMES_FILTERED = gql`
     $start: Int
     $where_name: String!
     $where_price: Float!
-    $where_category: String!
+    $where_category: [String!]
     $sort: [String!]
   ) {
     games(
@@ -93,7 +93,7 @@ export const QUERY_GAMES_FILTERED = gql`
       filters: {
         name: { containsi: $where_name }
         price: { lte: $where_price }
-        categories: { name: { containsi: $where_category } }
+        categories: { name: { in: $where_category } }
       }
       sort: $sort
     ) {

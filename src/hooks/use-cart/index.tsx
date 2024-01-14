@@ -60,6 +60,7 @@ const CartProvider = ({ children }: CartProviderProps) => {
   }, [])
 
   const { data, loading } = useQuery<ApiResponse>(QUERY_GAMES_BY_ID, {
+    skip: !cartItems.length,
     variables: { ids: cartItems }
   })
 

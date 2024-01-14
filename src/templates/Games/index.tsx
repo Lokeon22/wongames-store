@@ -12,6 +12,8 @@ import ExploreSidebar, { ItemProps } from "../../components/ExploreSidebar"
 import GameCard from "../../components/GameCard"
 import Empty from "../../components/Empty"
 
+import { categoryArrayFilter, where_categories } from "../../utils/formatfilter"
+
 export type GamesTemplateProps = {
   apolloInitialState?: string
   filterItems: ItemProps[]
@@ -25,17 +27,21 @@ function GamesTemplate({ filterItems }: GamesTemplateProps) {
       limit: gameLenght,
       where_name: "",
       where_price: 99,
-      where_category: "",
+      where_category: where_categories,
       sort: "price:desc"
     }
   })
 
   const onFilter = (values: Values) => {
     if (values.where_price || values.sort) {
+      const categoriasArray = categoryArrayFilter(values)
+
       fetchMore({
         variables: {
           where_price: values?.where_price ? values?.where_price : 99,
-          sort: values.sort ? values.sort : "price:asc"
+          sort: values.sort ? values.sort : "price:asc",
+          where_category:
+            categoriasArray.length <= 0 ? where_categories : categoriasArray
         }
       })
       return

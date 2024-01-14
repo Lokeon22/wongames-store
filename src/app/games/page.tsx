@@ -41,15 +41,15 @@ const filterCategories = {
   name: "categories",
   type: "checkbox",
   fields: [
-    { label: "Action", name: "action" },
-    { label: "Adventures", name: "adventures" },
-    { label: "Horror", name: "horror" },
-    { label: "Fantasy", name: "fantasy" },
-    { label: "RPG", name: "role-playing" },
-    { label: "JRPG", name: "jrpg" },
-    { label: "Simulation", name: "simulation" },
-    { label: "Strategy", name: "strategy" },
-    { label: "Shooter", name: "shooter " }
+    { label: "Action", name: "Action" },
+    { label: "Adventures", name: "Adventures" },
+    { label: "Horror", name: "Horror" },
+    { label: "Fantasy", name: "Fantasy" },
+    { label: "RPG", name: "Role-playing" },
+    { label: "JRPG", name: "Jrpg" },
+    { label: "Simulation", name: "Simulation" },
+    { label: "Strategy", name: "Strategy" },
+    { label: "Shooter", name: "Shooter " }
   ]
 }
 
