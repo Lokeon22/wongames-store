@@ -11,12 +11,12 @@ type BaseTemplateProps = {
 }
 
 const Base = ({ children }: BaseTemplateProps) => {
-  const { data: session } = useSession()
+  const { data: session, status } = useSession()
 
   return (
     <S.Wrapper>
       <Container>
-        <Menu username={session?.user.username} />
+        <Menu username={session?.user.username} status={status} />
       </Container>
 
       <S.Content>{children}</S.Content>

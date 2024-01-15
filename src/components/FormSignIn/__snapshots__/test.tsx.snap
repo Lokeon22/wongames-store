@@ -1,6 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<FormSignIn /> should render the form/signin 1`] = `
+.c3 {
+  display: inline-block;
+  vertical-align: middle;
+  overflow: hidden;
+}
+
 .c2 {
   display: flex;
   align-items: center;
@@ -45,6 +51,10 @@ exports[`<FormSignIn /> should render the form/signin 1`] = `
   margin-bottom: 0.8rem;
 }
 
+.c0 a {
+  text-decoration: none;
+}
+
 .c5 {
   display: block;
   text-decoration: none;
@@ -68,12 +78,6 @@ exports[`<FormSignIn /> should render the form/signin 1`] = `
 .c7 >a:hover {
   filter: brightness(0.8);
   transition: 0.1s ease-in-out;
-}
-
-.c3 {
-  display: inline-block;
-  vertical-align: middle;
-  overflow: hidden;
 }
 
 .c6 {
@@ -158,16 +162,21 @@ exports[`<FormSignIn /> should render the form/signin 1`] = `
       </div>
     </div>
     <a
-      class="c5"
-      href="#"
+      href="/forgot-password"
     >
-      Forgot your password?
+      <p
+        class="c5"
+      >
+        Forgot your password?
+      </p>
     </a>
     <button
       class="c6"
     >
       <span>
-        Sign in now
+        <span>
+          Sign in now
+        </span>
       </span>
     </button>
     <div

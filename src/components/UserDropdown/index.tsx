@@ -1,3 +1,4 @@
+import { signOut } from "next-auth/react"
 import Link from "next/link"
 import {
   AccountCircle,
@@ -35,12 +36,11 @@ const UserDropdown = ({ username }: UserDropdownProps) => (
           <span>Wishlist</span>
         </S.LinkWrapper>
       </Link>
-      <Link href="/">
-        <S.LinkWrapper>
-          <ExitToApp size={24} />
-          <span>Sign out</span>
-        </S.LinkWrapper>
-      </Link>
+
+      <S.LinkWrapper role="button" onClick={() => signOut()}>
+        <ExitToApp size={24} />
+        <span>Sign out</span>
+      </S.LinkWrapper>
     </S.Nav>
   </Dropdown>
 )

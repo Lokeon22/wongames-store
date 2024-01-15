@@ -2,6 +2,22 @@ import { render, screen } from "../../utils/test-utils"
 
 import FormSignIn from "."
 
+jest.mock("next/navigation", () => ({
+  useRouter: jest.fn(() => ({
+    push: jest.fn(),
+    query: "",
+    asPath: "",
+    route: "/"
+  }))
+}))
+
+jest.mock("templates/Base", () => ({
+  __esModule: true,
+  default: function Mock({ children }: { children: React.ReactNode }) {
+    return <div data-testid="Mock Base">{children}</div>
+  }
+}))
+
 describe("<FormSignIn />", () => {
   it("should render the form/signin", () => {
     const { container } = render(<FormSignIn />)

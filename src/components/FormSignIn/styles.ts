@@ -7,10 +7,13 @@ export const Wrapper = styled.main`
     ${TextFieldStyles.Wrapper} {
       margin-bottom: ${theme.spacings.xxsmal};
     }
+    a {
+      text-decoration: none;
+    }
   `}
 `
 
-export const ForgetPassword = styled.a`
+export const ForgetPassword = styled.p`
   ${({ theme }) => css`
     display: block;
     text-decoration: none;
@@ -45,4 +48,17 @@ export const FormLoading = styled.img.attrs(() => ({
   alt: "Waiting..."
 }))`
   width: 4rem;
+`
+
+export const FormError = styled.p`
+  ${({ theme }) => css`
+    text-align: center;
+    color: red;
+    font-size: ${theme.font.sizes.small};
+
+    svg {
+      width: 1.6rem;
+      margin-right: ${theme.spacings.xxsmal};
+    }
+  `}
 `

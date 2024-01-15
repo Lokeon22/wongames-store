@@ -205,7 +205,7 @@ exports[`<FormSignUp /> should render the form/signup 1`] = `
         </svg>
         <input
           class="c4"
-          name="confirm-password"
+          name="confirm_password"
           placeholder="Confirm password"
           type="password"
           value=""
@@ -217,7 +217,9 @@ exports[`<FormSignUp /> should render the form/signup 1`] = `
       type="submit"
     >
       <span>
-        Sign up now
+        <span>
+          Sign up now
+        </span>
       </span>
     </button>
     <div

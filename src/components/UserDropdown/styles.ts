@@ -26,6 +26,7 @@ export const LinkWrapper = styled.div`
     color: ${theme.colors.black};
     padding: ${theme.spacings.xsmall} ${theme.spacings.small};
     transition: background, color, ${theme.transition.default};
+    cursor: pointer;
 
     &:hover {
       background-color: ${theme.colors.primary};

@@ -4,7 +4,7 @@ import Menu from "."
 
 describe("<Menu />", () => {
   it("should render the menu", () => {
-    render(<Menu />)
+    render(<Menu status="checked" />)
 
     expect(screen.getByLabelText(/open menu/i)).toBeInTheDocument()
     expect(screen.getByLabelText(/search/i)).toBeInTheDocument()
@@ -12,7 +12,7 @@ describe("<Menu />", () => {
   })
 
   it("should handle the open/close mobile menu", () => {
-    render(<Menu />)
+    render(<Menu status="checked" />)
 
     const fullMenuElement = screen.getByRole("navigation", { hidden: true })
 
@@ -29,7 +29,7 @@ describe("<Menu />", () => {
   })
 
   it("should show register box when logged out", () => {
-    render(<Menu />)
+    render(<Menu status="checked" />)
 
     expect(screen.queryByText(/my account/i)).not.toBeInTheDocument()
     expect(screen.queryByText(/wishlist/i)).not.toBeInTheDocument()
@@ -41,7 +41,7 @@ describe("<Menu />", () => {
   })
 
   it("should show register box when logged in", () => {
-    render(<Menu username="Gabriel" />)
+    render(<Menu status="checked" username="Gabriel" />)
 
     expect(screen.getByText(/my account/i)).toBeInTheDocument()
     expect(screen.getAllByText(/wishlist/i)).toHaveLength(2)

@@ -2,11 +2,14 @@
 import { useState } from "react"
 import { useRouter } from "next/navigation"
 import { signIn } from "next-auth/react"
-import * as S from "./styles"
 import {
   Email as EmailIcon,
-  Lock as PasswordIcon
+  Lock as PasswordIcon,
+  ErrorOutline
 } from "@styled-icons/material-outlined"
+import { FieldErros, signInValidate } from "../../utils/validations"
+
+import * as S from "./styles"
 
 import TextField from "../TextField"
 import Button from "../Button"
@@ -19,6 +22,9 @@ type UserPermissionsLogin = {
 
 const FormSignIn = () => {
   const router = useRouter()
+
+  const [formError, setFormError] = useState("")
+  const [fieldError, setFieldError] = useState<FieldErros>({})
 
   const [values, setValues] = useState<UserPermissionsLogin>({
     email: "",
@@ -35,6 +41,14 @@ const FormSignIn = () => {
     e.preventDefault()
     setLoading(true)
 
+    const errors = signInValidate(values)
+
+    if (Object.keys(errors).length) {
+      setFieldError(errors)
+      setLoading(false)
+      return
+    }
+
     const result = await signIn("credentials", {
       ...values,
       redirect: false,
@@ -47,16 +61,23 @@ const FormSignIn = () => {
 
     setLoading(false)
 
-    console.error("email ou senha invalida")
+    setFormError("username or password is invalid")
   }
 
   return (
     <S.Wrapper>
+      {!!formError && (
+        <S.FormError>
+          <ErrorOutline />
+          {formError}
+        </S.FormError>
+      )}
       <form onSubmit={handleSubmit}>
         <TextField
           name="email"
           placeholder="Email"
           type="email"
+          error={fieldError?.email}
           onInputChange={(v) => handleInput("email", v)}
           icon={<EmailIcon />}
         />
@@ -64,10 +85,14 @@ const FormSignIn = () => {
           name="password"
           placeholder="Password"
           type="password"
+          error={fieldError?.password}
           onInputChange={(v) => handleInput("password", v)}
           icon={<PasswordIcon />}
         />
-        <S.ForgetPassword href="#">Forgot your password?</S.ForgetPassword>
+        <Link href="/forgot-password">
+          <S.ForgetPassword>Forgot your password?</S.ForgetPassword>
+        </Link>
+
         <Button size="large" fullWidth disabled={loading}>
           {loading ? <S.FormLoading /> : <span>Sign in now</span>}
         </Button>

@@ -43,6 +43,7 @@ export const Link = styled.p<LinkProps>`
     align-items: center;
     gap: 1.2rem;
     padding: ${theme.spacings.xsmall} ${theme.spacings.small};
+    cursor: pointer;
 
     transition: background, color, ${theme.transition.default};
 
