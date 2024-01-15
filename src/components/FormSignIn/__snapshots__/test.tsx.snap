@@ -36,6 +36,11 @@ exports[`<FormSignIn /> should render the form/signin 1`] = `
   outline: none;
 }
 
+.c4:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 2.4rem #EAEAEA inset;
+  filter: none;
+}
+
 .c0 .c1 {
   margin-bottom: 0.8rem;
 }

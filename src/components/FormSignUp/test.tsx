@@ -1,10 +1,15 @@
 import { render, screen } from "../../utils/test-utils"
+import { MockedProvider } from "@apollo/client/testing"
 
 import FormSignUp from "."
 
-describe("<FormSignIn />", () => {
-  it("should render the form/signin", () => {
-    const { container } = render(<FormSignUp />)
+describe("<FormSignUp />", () => {
+  it("should render the form/signup", () => {
+    const { container } = render(
+      <MockedProvider>
+        <FormSignUp />
+      </MockedProvider>
+    )
 
     expect(screen.getByPlaceholderText(/name/i)).toBeInTheDocument()
     expect(screen.getByPlaceholderText(/email/i)).toBeInTheDocument()
@@ -20,7 +25,11 @@ describe("<FormSignIn />", () => {
   })
 
   it("should render the link to signin/page", () => {
-    render(<FormSignUp />)
+    render(
+      <MockedProvider>
+        <FormSignUp />
+      </MockedProvider>
+    )
 
     expect(screen.getByText(/already have an account?/i)).toBeInTheDocument()
     expect(screen.getByRole("link", { name: /sign in/i })).toBeInTheDocument()

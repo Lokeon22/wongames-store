@@ -27,6 +27,8 @@
     "jest-environment-jsdom": "^29.7.0",
     "lodash.xor": "^4.5.0",
     "next": "14.0.4",
+    "next-auth": "^4.24.5",
+    "next13-progressbar": "^1.1.3",
     "polished": "^4.2.2",
     "react": "^18",
     "react-dom": "^18",

@@ -1,6 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<FormSignIn /> should render the form/signin 1`] = `
+exports[`<FormSignUp /> should render the form/signup 1`] = `
+.c3 {
+  display: inline-block;
+  vertical-align: middle;
+  overflow: hidden;
+}
+
 .c2 {
   display: flex;
   align-items: center;
@@ -34,6 +40,11 @@ exports[`<FormSignIn /> should render the form/signin 1`] = `
   background: transparent;
   border: 0;
   outline: none;
+}
+
+.c4:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 2.4rem #EAEAEA inset;
+  filter: none;
 }
 
 .c6 {
@@ -82,12 +93,6 @@ exports[`<FormSignIn /> should render the form/signin 1`] = `
   transition: 0.1s ease-in-out;
 }
 
-.c3 {
-  display: inline-block;
-  vertical-align: middle;
-  overflow: hidden;
-}
-
 <main
   class="c0"
 >
@@ -116,9 +121,9 @@ exports[`<FormSignIn /> should render the form/signin 1`] = `
         </svg>
         <input
           class="c4"
-          name="name"
-          placeholder="Name"
-          type="name"
+          name="username"
+          placeholder="Username"
+          type="text"
           value=""
         />
       </div>
@@ -209,6 +214,7 @@ exports[`<FormSignIn /> should render the form/signin 1`] = `
     </div>
     <button
       class="c5 c6"
+      type="submit"
     >
       <span>
         Sign up now
