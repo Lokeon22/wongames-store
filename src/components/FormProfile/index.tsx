@@ -5,9 +5,14 @@ import * as S from "./styles"
 import Heading from "../Heading"
 import TextField from "../TextField"
 import Button from "../Button"
+import { FormEvent } from "react"
 
 const FormProfile = () => {
   const { data: session } = useSession()
+
+  const handleSub = (event: FormEvent) => {
+    event.preventDefault()
+  }
 
   return (
     <S.Wrapper>
@@ -15,7 +20,7 @@ const FormProfile = () => {
         My profile
       </Heading>
 
-      <S.Form>
+      <S.Form onSubmit={handleSub}>
         <TextField
           name="name"
           placeholder="Name"
@@ -31,24 +36,9 @@ const FormProfile = () => {
           disabled
         />
 
-        <TextField
-          name="password"
-          type="password"
-          placeholder="Type your password"
-          label="Password"
-          disabled
-        />
-
-        <TextField
-          name="new-password"
-          type="password"
-          placeholder="New password"
-          label="New password"
-          initialValue="jhondoe@gmail.com"
-          disabled
-        />
-
-        <Button size="large">Save</Button>
+        <Button type="button" size="large">
+          Save
+        </Button>
       </S.Form>
     </S.Wrapper>
   )

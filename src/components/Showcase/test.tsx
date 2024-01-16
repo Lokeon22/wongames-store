@@ -7,6 +7,12 @@ import highlightMock from "../Highlight/mock"
 
 import { GameCardProps } from "../GameCard"
 
+jest.mock("next-auth/react", () => ({
+  useSession: jest.fn(() => {
+    return [{ session: null }]
+  })
+}))
+
 const items: GameCardProps[] = gamesMock
 const props = highlightMock
 

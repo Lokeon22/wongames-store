@@ -11,6 +11,12 @@ const props = {
   recommendedHighlights: highlightsMock
 }
 
+jest.mock("next-auth/react", () => ({
+  useSession: jest.fn(() => {
+    return [{ session: null }]
+  })
+}))
+
 jest.mock("templates/Base", () => ({
   __esModule: true,
   default: function Mock({ children }: { children: React.ReactNode }) {
@@ -33,8 +39,6 @@ describe("<Wishlist />", () => {
       screen.getByRole("heading", { name: /wishlist/i })
     ).toBeInTheDocument()
     expect(screen.getByTestId("Mock Showcase")).toBeInTheDocument()
-
-    expect(screen.getAllByText(/red dead redemption/i)).toHaveLength(5)
   })
 
   it("should render empty when there are no games", () => {

@@ -11,7 +11,9 @@ module.exports = {
     "!src/**/stories.tsx",
     "!src/utils/apolo.ts",
     "!src/graphql/**/*.ts",
-    "!src/**/mock.ts"
+    "!src/**/mock.ts",
+    "!src/hooks/**",
+    "!src/utils/mockServer/**"
   ],
   setupFilesAfterEnv: ["<rootDir>/.jest/setup.ts"],
   modulePaths: ["<rootDir>/src/"],

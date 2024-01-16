@@ -1,5 +1,4 @@
 import { Cart as CartContent } from "../../templates/Cart"
-import items from "../../components/CartList/mock"
 import cards from "../../components/PaymentOptions/mock"
 
 import { initializeApollo } from "../..//utils/apolo"
@@ -27,8 +26,6 @@ async function getDataCart() {
     recommendedTitle: recommended.attributes.section.title,
     games: gamesMapper(recommended.attributes.section.games.data),
     highlights: highlightsMapper(recommended.attributes.section.highlight),
-    items,
-    total: "R$ 350,00",
     cards
   }
 }

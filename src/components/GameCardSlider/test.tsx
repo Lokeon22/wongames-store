@@ -4,6 +4,12 @@ import { render } from "../../utils/test-utils"
 import { GameCardProps } from "../GameCard"
 import GameCardSlider from "."
 
+jest.mock("next-auth/react", () => ({
+  useSession: jest.fn(() => {
+    return [{ session: null }]
+  })
+}))
+
 const items: GameCardProps[] = [
   {
     id: "1",

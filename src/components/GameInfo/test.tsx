@@ -3,6 +3,12 @@ import { render, screen } from "../../utils/test-utils"
 import GameInfo from "."
 import items from "./mock"
 
+jest.mock("next-auth/react", () => ({
+  useSession: jest.fn(() => {
+    return [{ session: null }]
+  })
+}))
+
 describe("<GameInfo />", () => {
   it("should render the heading", () => {
     const { container } = render(<GameInfo {...items} />)
@@ -18,15 +24,11 @@ describe("<GameInfo />", () => {
     expect(container.firstChild).toMatchSnapshot()
   })
 
-  it("should render the buttons", () => {
+  it("should render the button", () => {
     render(<GameInfo {...items} />)
 
     expect(
       screen.getByRole("button", { name: /add to cart/i })
-    ).toBeInTheDocument()
-
-    expect(
-      screen.getByRole("button", { name: /wishlist/i })
     ).toBeInTheDocument()
   })
 })

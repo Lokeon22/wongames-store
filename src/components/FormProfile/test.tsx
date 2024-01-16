@@ -18,10 +18,5 @@ describe("<FormProfile />", () => {
 
     expect(screen.getByText("Name")).toBeInTheDocument()
     expect(screen.getByText("E-mail")).toBeInTheDocument()
-
-    expect(
-      screen.getByPlaceholderText("Type your password")
-    ).toBeInTheDocument()
-    expect(screen.getByPlaceholderText("New password")).toBeInTheDocument()
   })
 })

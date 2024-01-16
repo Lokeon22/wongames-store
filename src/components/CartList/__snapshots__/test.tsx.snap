@@ -90,13 +90,6 @@ exports[`<CartList /> should render the cartList 1`] = `
 }
 
 @media (min-width: 768px) {
-  .c2 {
-    display: flex;
-    gap: 1rem;
-  }
-}
-
-@media (min-width: 768px) {
   .c4 {
     width: 15rem;
     height: 7rem;

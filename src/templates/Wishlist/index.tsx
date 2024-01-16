@@ -1,4 +1,5 @@
 "use client"
+import { useWishlist } from "../../hooks/use-wishlist"
 import * as S from "./styles"
 import Base from "../Base"
 
@@ -19,11 +20,12 @@ type WishlistTemplateProps = {
 }
 
 export function Wishlist({
-  games,
   recommendedTitle,
   recommendedGames,
   recommendedHighlights
 }: WishlistTemplateProps) {
+  const { items: games } = useWishlist()
+
   return (
     <Base>
       <S.Section>

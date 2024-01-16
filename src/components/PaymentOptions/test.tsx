@@ -17,7 +17,7 @@ describe("<PaymentOptions />", () => {
     expect(
       screen.getByRole("heading", { name: /payment/i })
     ).toBeInTheDocument()
-    expect(screen.getAllByRole("button")).toHaveLength(3)
+    expect(screen.getAllByRole("button")).toHaveLength(2)
     expect(screen.getAllByRole("img")).toHaveLength(2)
   })
 

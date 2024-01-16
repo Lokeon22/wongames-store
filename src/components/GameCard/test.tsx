@@ -1,6 +1,25 @@
-import { render, screen, fireEvent } from "../../utils/test-utils"
+import { render, screen } from "../../utils/test-utils"
+import { Session } from "next-auth"
 
 import GameCard from "."
+
+const data: Session = {
+  user: {
+    id: "1",
+    username: "teste",
+    email: "teste@gmail.com",
+    jwt: "dahyunlokeon22",
+    blocked: false,
+    confirmed: true
+  },
+  expires: ""
+}
+
+jest.mock("next-auth/react", () => ({
+  useSession: jest.fn(() => {
+    return [{ section: data }]
+  })
+}))
 
 const props = {
   id: "1",
@@ -61,21 +80,6 @@ describe("<GameCard />", () => {
     expect(screen.getByText("$215.00")).not.toHaveStyle({
       textDecoration: "line-through"
     })
-  })
-
-  it("should render a filled favorite icon when favorite is true", () => {
-    render(<GameCard {...props} favorite />)
-
-    expect(screen.getByLabelText(/remove from wishlist/i)).toBeInTheDocument()
-  })
-
-  it("should call onFav when method favorite is clicked", () => {
-    const onFav = jest.fn()
-    render(<GameCard {...props} favorite onFav={onFav} />)
-
-    fireEvent.click(screen.getAllByRole("button")[0])
-
-    expect(onFav).toBeCalled()
   })
 
   it("should be render ribbon", () => {

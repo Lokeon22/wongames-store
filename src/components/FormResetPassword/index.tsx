@@ -1,8 +1,5 @@
 "use client"
 import { useState } from "react"
-import { signIn } from "next-auth/react"
-import { useRouter } from "next/navigation"
-
 import { Lock, ErrorOutline } from "@styled-icons/material-outlined"
 
 import Button from "../Button"
@@ -18,7 +15,6 @@ const FormResetPassword = () => {
   const [fieldError, setFieldError] = useState<FieldErros>({})
   const [values, setValues] = useState({ password: "", confirm_password: "" })
   const [loading, setLoading] = useState(false)
-  const routes = useRouter()
 
   const handleInput = (field: string, value: string) => {
     setValues((s) => ({ ...s, [field]: value }))
@@ -37,17 +33,6 @@ const FormResetPassword = () => {
     }
 
     setFieldError({})
-
-    // sign in
-    const result = await signIn("credentials", {
-      ...values,
-      redirect: false,
-      callbackUrl: "/"
-    })
-
-    if (result?.url) {
-      return routes.push(result?.url)
-    }
 
     setLoading(false)
 

@@ -120,41 +120,6 @@ exports[`<GameInfo /> should render the heading 1`] = `
   padding: 0.8rem;
 }
 
-.c9 {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(189deg, #ff5f5f 0%, #f062c0 50%);
-  border-radius: 0.4rem;
-  border: 0;
-  cursor: pointer;
-  color: #FAFAFA;
-  padding: 0.8rem;
-  text-decoration: none;
-  height: 4rem;
-  font-size: 1.4rem;
-  padding: 0.8rem 3.2rem;
-  background: none;
-  color: #F231A5;
-}
-
-.c9:hover {
-  background: linear-gradient(180deg, #e35565 0%, #d958a6 50%);
-}
-
-.c9 svg {
-  width: 1.5rem;
-}
-
-.c9 svg+span {
-  padding: 0.8rem;
-}
-
-.c9:hover {
-  background: none;
-  color: #e20e8d;
-}
-
 @media (min-width: 768px) {
   .c2 {
     font-size: 2.8rem;
@@ -238,25 +203,6 @@ exports[`<GameInfo /> should render the heading 1`] = `
       </svg>
       <span>
         Add to cart
-      </span>
-    </button>
-    <button
-      class="c9"
-    >
-      <svg
-        aria-hidden="true"
-        class="c8"
-        fill="currentColor"
-        focusable="false"
-        viewBox="0 0 24 24"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M16.5 3c-1.74 0-3.41.81-4.5 2.09C10.91 3.81 9.24 3 7.5 3 4.42 3 2 5.42 2 8.5c0 3.78 3.4 6.86 8.55 11.54L12 21.35l1.45-1.32C18.6 15.36 22 12.28 22 8.5 22 5.42 19.58 3 16.5 3zm-4.4 15.55-.1.1-.1-.1C7.14 14.24 4 11.39 4 8.5 4 6.5 5.5 5 7.5 5c1.54 0 3.04.99 3.57 2.36h1.87C13.46 5.99 14.96 5 16.5 5c2 0 3.5 1.5 3.5 3.5 0 2.89-3.14 5.74-7.9 10.05z"
-        />
-      </svg>
-      <span>
-        Wishlist
       </span>
     </button>
   </div>

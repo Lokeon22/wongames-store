@@ -1,8 +1,5 @@
 "use client"
 import { useState } from "react"
-import { signIn } from "next-auth/react"
-import { useRouter } from "next/navigation"
-
 import { Email, ErrorOutline } from "@styled-icons/material-outlined"
 
 import Button from "../Button"
@@ -18,7 +15,6 @@ const FormForgotPassword = () => {
   const [fieldError, setFieldError] = useState<FieldErros>({})
   const [values, setValues] = useState({ email: "" })
   const [loading, setLoading] = useState(false)
-  const routes = useRouter()
 
   const handleInput = (field: string, value: string) => {
     setValues((s) => ({ ...s, [field]: value }))
@@ -38,20 +34,27 @@ const FormForgotPassword = () => {
 
     setFieldError({})
 
-    // sign in
-    const result = await signIn("credentials", {
-      ...values,
-      redirect: false,
-      callbackUrl: "/"
-    })
+    const response = await fetch(
+      //here gmail http error 505cms
+      `${process.env.NEXT_PUBLIC_API_URL}/api/auth/forgot-password`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(values)
+      }
+    )
 
-    if (result?.url) {
-      return routes.push(result?.url)
-    }
-
+    const data = await response.json()
     setLoading(false)
 
-    setFormError("username or password is invalid")
+    if (data.error) {
+      console.log("Error ", data)
+      setFormError("Change your password in your account/profile")
+    } else {
+      console.log("Now change your password in your account/profile")
+    }
   }
 
   return (
@@ -65,7 +68,7 @@ const FormForgotPassword = () => {
         <TextField
           name="email"
           placeholder="Email"
-          type="email"
+          type="text"
           error={fieldError?.email}
           onInputChange={(v) => handleInput("email", v)}
           icon={<Email />}

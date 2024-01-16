@@ -11,11 +11,6 @@ export const Wrapper = styled.div`
         padding: ${theme.spacings.xxsmal};
     `}
   `}
-
-  ${media.greaterThan("medium")`
-    display: flex;
-    gap: 1rem;
-  `}
 `
 
 export const GameContent = styled.div`

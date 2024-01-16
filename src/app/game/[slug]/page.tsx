@@ -72,7 +72,10 @@ async function generateStaticParams({ params }: ParamsProps) {
       id: data[0].id,
       title: game.name,
       price: game.price,
-      description: game.short_description
+      description: game.short_description,
+      developer: game.developers.data[0].attributes.name,
+      slug: game.slug,
+      image: `http://localhost:1337${game.cover.data.attributes.url}`
     },
     gallery: game.gallery.data.map((img) => ({
       src: `http://localhost:1337${img.attributes.url}`,

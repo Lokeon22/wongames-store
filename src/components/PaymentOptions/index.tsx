@@ -1,7 +1,7 @@
 "use client"
 import { useState } from "react"
 import * as S from "./styles"
-import { Add, ShoppingCart } from "@styled-icons/material-outlined"
+import { ShoppingCart } from "@styled-icons/material-outlined"
 
 import Heading from "../Heading"
 import Radio from "../Radio"
@@ -44,11 +44,6 @@ const PaymentOptions = ({ cards, handlePayment }: PaymentOptionsProps) => {
                 </S.CardItem>
               )
             })}
-
-          <S.AddCard role="button">
-            <Add style={{ marginRight: "1rem" }} size={24} />
-            Add a new credit card
-          </S.AddCard>
         </S.Cardslist>
       </S.Body>
       <S.Footer>
