@@ -25,9 +25,9 @@ export type WishlistProviderProps = {
 
 const WishlistProvider = ({ children }: WishlistProviderProps) => {
   const [wish, setWish] = useState<GameCardProps[]>(
-    typeof window !== "undefined"
-      ? JSON.parse(`${localStorage.getItem("@wongames:wish")}`)
-      : []
+    (typeof window !== "undefined" &&
+      JSON.parse(`${localStorage.getItem("@wongames:wish")}`)) ||
+      []
   )
 
   const addToWishlist = (data: GameCardProps) => {

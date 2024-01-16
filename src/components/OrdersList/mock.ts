@@ -5,7 +5,7 @@ const orders = [
       flag: "mastercard",
       img: "../img/flag.svg",
       number: "**** **** **** 4242",
-      purchaseDate: "Purchase made on Apr 14, 2021"
+      purchaseDate: "Purchase made on Apr 14, 2023"
     },
     games: [
       {
@@ -14,7 +14,7 @@ const orders = [
         downloadLink:
           "https://wongames.com/game/download/yuYT56Tgh431LkjhNBgdf",
         img: "../img/red-dead.png",
-        price: "199.00"
+        price: "$29.00"
       }
     ]
   },
@@ -24,7 +24,7 @@ const orders = [
       flag: "mastercard",
       img: "../img/flag.svg",
       number: "**** **** **** 4444",
-      purchaseDate: "Purchase made on Apr 14, 2021"
+      purchaseDate: "Purchase made on Apr 14, 2023"
     },
     games: [
       {
@@ -33,7 +33,7 @@ const orders = [
         downloadLink:
           "https://wongames.com/game/download/yuYT56Tgh431LkjhNBgdf",
         img: "../img/red-dead.png",
-        price: "150.00"
+        price: "$29.00"
       }
     ]
   }

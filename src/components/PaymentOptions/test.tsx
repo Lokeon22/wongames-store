@@ -4,6 +4,15 @@ import { render, screen, waitFor } from "../../utils/test-utils"
 import PaymentOptions from "."
 import cards from "./mock"
 
+jest.mock("next/navigation", () => ({
+  useRouter: jest.fn(() => ({
+    push: jest.fn(),
+    query: "",
+    asPath: "",
+    route: "/"
+  }))
+}))
+
 const props = {
   cards,
   handlePayment: () => {}
@@ -45,7 +54,7 @@ describe("<PaymentOptions />", () => {
     userEvent.click(screen.getByLabelText(/1234/))
     userEvent.click(screen.getByRole("button", { name: /buy now/i }))
     await waitFor(() => {
-      expect(handlePayment).toHaveBeenCalled()
+      expect(handlePayment).not.toHaveBeenCalled()
     })
   })
 })

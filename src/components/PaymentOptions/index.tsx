@@ -1,5 +1,7 @@
 "use client"
-import { useState } from "react"
+import { FormEvent, useState } from "react"
+import { useCart } from "../../hooks/use-cart"
+import { useRouter } from "next/navigation"
 import * as S from "./styles"
 import { ShoppingCart } from "@styled-icons/material-outlined"
 
@@ -15,8 +17,20 @@ export type PaymentOptionsProps = {
   handlePayment: () => void
 }
 
-const PaymentOptions = ({ cards, handlePayment }: PaymentOptionsProps) => {
+const PaymentOptions = ({ cards }: PaymentOptionsProps) => {
+  const { items } = useCart()
+  const { push } = useRouter()
   const [check, setCheck] = useState(false)
+
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault()
+
+    if (items.length <= 0) {
+      return
+    }
+
+    return push("/success")
+  }
 
   return (
     <S.Wrapper>
@@ -50,10 +64,11 @@ const PaymentOptions = ({ cards, handlePayment }: PaymentOptionsProps) => {
         <Button fullWidth minimal>
           Continue shopping
         </Button>
+
         <Button
           fullWidth
           icon={<ShoppingCart />}
-          onClick={handlePayment}
+          onClick={handleSubmit}
           disabled={!check}
         >
           Buy now

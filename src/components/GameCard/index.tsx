@@ -41,7 +41,7 @@ const GameCard = ({
 }: GameCardProps) => {
   const { data } = useSession()
   const { items, addToWishlist, removeFromWishlist } = useWishlist()
-  const isWish = items.some((fav) => fav.id === id)
+  const isWish = items?.some((fav) => fav.id === id)
 
   const handleWishItems = () => {
     isWish

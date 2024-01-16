@@ -10,6 +10,7 @@ import { QUERY_UPCOMING } from "../../../graphql/queries/upcoming"
 
 import { Platform } from "../../../components/GameDetails"
 import { gamesMapper, highlightsMapper } from "../../../utils/mappers"
+import { getImageUrl } from "../../../utils/getImageUrl"
 
 import NotFound from "../../../app/not-found"
 
@@ -67,7 +68,7 @@ async function generateStaticParams({ params }: ParamsProps) {
   })
 
   return {
-    cover: `http://localhost:1337${game.cover.data.attributes.url}`,
+    cover: `${getImageUrl(game.cover.data.attributes.url)}`,
     gameInfo: {
       id: data[0].id,
       title: game.name,
@@ -75,10 +76,10 @@ async function generateStaticParams({ params }: ParamsProps) {
       description: game.short_description,
       developer: game.developers.data[0].attributes.name,
       slug: game.slug,
-      image: `http://localhost:1337${game.cover.data.attributes.url}`
+      image: `${getImageUrl(game.cover.data.attributes.url)}`
     },
     gallery: game.gallery.data.map((img) => ({
-      src: `http://localhost:1337${img.attributes.url}`,
+      src: `${getImageUrl(img.attributes.url)}`,
       label: img.attributes.label
     })),
     description: game.description,

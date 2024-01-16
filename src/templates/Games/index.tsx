@@ -13,6 +13,7 @@ import GameCard from "../../components/GameCard"
 import Empty from "../../components/Empty"
 
 import { categoryArrayFilter, where_categories } from "../../utils/formatfilter"
+import { getImageUrl } from "../../utils/getImageUrl"
 
 export type GamesTemplateProps = {
   apolloInitialState?: string
@@ -81,7 +82,9 @@ function GamesTemplate({ filterItems }: GamesTemplateProps) {
                       id={id}
                       slug={attributes.slug}
                       title={attributes.name}
-                      image={`http://localhost:1337${attributes.cover.data.attributes.url}`}
+                      image={`${getImageUrl(
+                        attributes.cover.data.attributes.url
+                      )}`}
                       price={attributes.price}
                       developer={attributes.developers.data[0].attributes.name}
                     />

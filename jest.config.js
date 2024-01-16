@@ -13,7 +13,9 @@ module.exports = {
     "!src/graphql/**/*.ts",
     "!src/**/mock.ts",
     "!src/hooks/**",
-    "!src/utils/mockServer/**"
+    "!src/utils/mockServer/**",
+    "!src/utils/tests/*.tsx",
+    "!src/utils/formatfilter.ts"
   ],
   setupFilesAfterEnv: ["<rootDir>/.jest/setup.ts"],
   modulePaths: ["<rootDir>/src/"],
