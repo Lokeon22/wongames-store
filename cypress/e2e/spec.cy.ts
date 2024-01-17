@@ -17,5 +17,17 @@ describe("Home Page", () => {
         cy.findByRole("heading", { name: /divinity: original sin 2/i })
         cy.findByRole("link", { name: /buy now/i })
       })
+
+    cy.get(".sc-bqyKbq")
+      .first()
+      .within(() => {
+        cy.findByRole("heading", { name: /new games/i })
+
+        cy.findByRole("heading", { name: /most popular games/i })
+
+        cy.findByRole("heading", { name: /upcoming games/i })
+
+        cy.findByRole("heading", { name: /under \$2/i })
+      })
   })
 })
